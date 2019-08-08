@@ -32,8 +32,10 @@ RSpec.describe RailwayStationsController, type: :controller do
   end
 
   let(:invalid_attributes) do
-    { name: 'station' }
+    { name: nil }
   end
+
+  let(:railway_station) { create(:railway_station) }
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
@@ -42,7 +44,6 @@ RSpec.describe RailwayStationsController, type: :controller do
 
   describe 'GET #index' do
     it 'returns a success response' do
-      RailwayStation.create! valid_attributes
       get :index, params: {}, session: valid_session
       expect(response).to be_successful
     end
@@ -50,7 +51,6 @@ RSpec.describe RailwayStationsController, type: :controller do
 
   describe 'GET #show' do
     it 'returns a success response' do
-      railway_station = RailwayStation.create! valid_attributes
       get :show, params: { id: railway_station.to_param }, session: valid_session
       expect(response).to be_successful
     end
@@ -65,7 +65,6 @@ RSpec.describe RailwayStationsController, type: :controller do
 
   describe 'GET #edit' do
     it 'returns a success response' do
-      railway_station = RailwayStation.create! valid_attributes
       get :edit, params: { id: railway_station.to_param }, session: valid_session
       expect(response).to be_successful
     end
@@ -85,7 +84,7 @@ RSpec.describe RailwayStationsController, type: :controller do
       end
     end
 
-    xcontext 'with invalid params' do
+    context 'with invalid params' do
       it "returns a success response (i.e. to display the 'new' template)" do
         post :create, params: { railway_station: invalid_attributes }, session: valid_session
         expect(response).to be_successful
@@ -100,22 +99,19 @@ RSpec.describe RailwayStationsController, type: :controller do
       end
 
       it 'updates the requested railway_station' do
-        railway_station = RailwayStation.create! valid_attributes
         put :update, params: { id: railway_station.to_param, railway_station: new_attributes }, session: valid_session
         railway_station.reload
-        skip('Add assertions for updated state')
+        expect(railway_station.name).to eq(new_attributes[:name])
       end
 
       it 'redirects to the railway_station' do
-        railway_station = RailwayStation.create! valid_attributes
         put :update, params: { id: railway_station.to_param, railway_station: valid_attributes }, session: valid_session
         expect(response).to redirect_to(railway_station)
       end
     end
 
-    xcontext 'with invalid params' do
+    context 'with invalid params' do
       it "returns a success response (i.e. to display the 'edit' template)" do
-        railway_station = RailwayStation.create! valid_attributes
         put :update, params: { id: railway_station.to_param, railway_station: invalid_attributes },
                      session: valid_session
         expect(response).to be_successful
@@ -124,15 +120,15 @@ RSpec.describe RailwayStationsController, type: :controller do
   end
 
   describe 'DELETE #destroy' do
+    before { railway_station }
+
     it 'destroys the requested railway_station' do
-      railway_station = RailwayStation.create! valid_attributes
       expect do
         delete :destroy, params: { id: railway_station.to_param }, session: valid_session
       end.to change(RailwayStation, :count).by(-1)
     end
 
     it 'redirects to the railway_stations list' do
-      railway_station = RailwayStation.create! valid_attributes
       delete :destroy, params: { id: railway_station.to_param }, session: valid_session
       expect(response).to redirect_to(railway_stations_url)
     end

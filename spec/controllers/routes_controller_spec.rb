@@ -11,7 +11,7 @@ RSpec.describe RoutesController, type: :controller do
 
   let(:valid_session) { {} }
 
-  let(:route) { Route.create! valid_attributes }
+  let(:route) { create(:route) }
 
   describe 'GET #index' do
     it 'returns a success response' do

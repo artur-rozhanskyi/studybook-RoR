@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe 'trains/edit', type: :view do
-  let!(:train) { Train.create! }
+  let!(:train) { create(:train) }
 
   before { assign(:train, train) }
 
