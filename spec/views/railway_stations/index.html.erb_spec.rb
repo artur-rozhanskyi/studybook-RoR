@@ -1,10 +1,14 @@
 require 'rails_helper'
 
 RSpec.describe 'railway_stations/index', type: :view do
+  let(:valid_attributes) do
+    { name: 'Station' }
+  end
+
   before do
     assign(:railway_stations, [
-             RailwayStation.create!,
-             RailwayStation.create!
+             create(:railway_station),
+             create(:railway_station)
            ])
   end
 

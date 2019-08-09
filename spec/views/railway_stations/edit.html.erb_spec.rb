@@ -1,7 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe 'railway_stations/edit', type: :view do
-  let!(:railway_station) { RailwayStation.create! }
+  let(:valid_attributes) do
+    { name: 'Station' }
+  end
+
+  let!(:railway_station) { RailwayStation.create! valid_attributes }
 
   before { assign(:railway_station, railway_station) }
 

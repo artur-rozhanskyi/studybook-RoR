@@ -28,17 +28,19 @@ RSpec.describe TrainsController, type: :controller do
   # Train. As you add validations to Train, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) do
-    skip('Add a hash of attributes valid for your model')
+    { number: '12345' }
   end
 
   let(:invalid_attributes) do
-    skip('Add a hash of attributes invalid for your model')
+    { number: nil }
   end
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
   # TrainsController. Be sure to keep this updated too.
   let(:valid_session) { {} }
+
+  let(:train) { create(:train) }
 
   describe 'GET #index' do
     it 'returns a success response' do
@@ -50,7 +52,6 @@ RSpec.describe TrainsController, type: :controller do
 
   describe 'GET #show' do
     it 'returns a success response' do
-      train = Train.create! valid_attributes
       get :show, params: { id: train.to_param }, session: valid_session
       expect(response).to be_successful
     end
@@ -65,7 +66,6 @@ RSpec.describe TrainsController, type: :controller do
 
   describe 'GET #edit' do
     it 'returns a success response' do
-      train = Train.create! valid_attributes
       get :edit, params: { id: train.to_param }, session: valid_session
       expect(response).to be_successful
     end
@@ -96,18 +96,16 @@ RSpec.describe TrainsController, type: :controller do
   describe 'PUT #update' do
     context 'with valid params' do
       let(:new_attributes) do
-        skip('Add a hash of attributes valid for your model')
+        { number: 'Train2' }
       end
 
       it 'updates the requested train' do
-        train = Train.create! valid_attributes
         put :update, params: { id: train.to_param, train: new_attributes }, session: valid_session
         train.reload
-        skip('Add assertions for updated state')
+        expect(train.number).to eq(new_attributes[:number])
       end
 
       it 'redirects to the train' do
-        train = Train.create! valid_attributes
         put :update, params: { id: train.to_param, train: valid_attributes }, session: valid_session
         expect(response).to redirect_to(train)
       end
@@ -115,7 +113,6 @@ RSpec.describe TrainsController, type: :controller do
 
     context 'with invalid params' do
       it "returns a success response (i.e. to display the 'edit' template)" do
-        train = Train.create! valid_attributes
         put :update, params: { id: train.to_param, train: invalid_attributes }, session: valid_session
         expect(response).to be_successful
       end
@@ -123,15 +120,15 @@ RSpec.describe TrainsController, type: :controller do
   end
 
   describe 'DELETE #destroy' do
+    before { train }
+
     it 'destroys the requested train' do
-      train = Train.create! valid_attributes
       expect do
         delete :destroy, params: { id: train.to_param }, session: valid_session
       end.to change(Train, :count).by(-1)
     end
 
     it 'redirects to the trains list' do
-      train = Train.create! valid_attributes
       delete :destroy, params: { id: train.to_param }, session: valid_session
       expect(response).to redirect_to(trains_url)
     end
