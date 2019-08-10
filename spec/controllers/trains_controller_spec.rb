@@ -28,7 +28,7 @@ RSpec.describe TrainsController, type: :controller do
   # Train. As you add validations to Train, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) do
-    { number: '12345' }
+    { number: '12345', current_station: create(:railway_station) }
   end
 
   let(:invalid_attributes) do
