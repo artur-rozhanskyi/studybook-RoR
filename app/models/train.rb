@@ -6,4 +6,6 @@ class Train < ApplicationRecord
              foreign_key: :current_station_id,
              optional: true,
              inverse_of: :trains
+
+  belongs_to :route, optional: true
 end
