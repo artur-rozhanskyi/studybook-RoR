@@ -53,3 +53,6 @@ Style/StringLiterals:
 # SupportedStyles: percent, brackets
 Style/SymbolArray:
   EnforcedStyle: brackets
+
+Rails/HasAndBelongsToMany:
+  Enabled: false

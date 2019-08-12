@@ -6,9 +6,9 @@ FactoryBot.define do
 
     trait :with_path do
       before(:create) do |t|
-        t.train.route = create(:route, :with_railway_station)
-        t.first_station = t.train.route.railway_stations.first
-        t.last_station = t.train.route.railway_stations.last
+        t.train.routes = [create(:route, :with_railway_station)]
+        t.first_station = t.train.routes.first.railway_stations.first
+        t.last_station = t.train.routes.first.railway_stations.last
       end
     end
   end

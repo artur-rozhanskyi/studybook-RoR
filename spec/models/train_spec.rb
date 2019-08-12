@@ -13,5 +13,5 @@ RSpec.describe Train, type: :model do
 
   it { expect(train).to belong_to(:current_station).class_name('RailwayStation').without_validating_presence }
 
-  it { expect(train).to belong_to(:route).without_validating_presence }
+  it { expect(train).to have_and_belong_to_many(:routes) }
 end

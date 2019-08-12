@@ -12,4 +12,6 @@ RSpec.describe Route, type: :model do
   end
 
   it { expect(route).to have_many(:railway_stations) }
+
+  it { expect(route).to have_and_belong_to_many(:trains) }
 end

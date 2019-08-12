@@ -32,7 +32,7 @@ RSpec.describe TrainsController, type: :controller do
   end
 
   let(:invalid_attributes) do
-    { number: nil }
+    { number: nil,  current_station: create(:railway_station) }
   end
 
   # This should return the minimal set of values that should be in the session
@@ -96,7 +96,7 @@ RSpec.describe TrainsController, type: :controller do
   describe 'PUT #update' do
     context 'with valid params' do
       let(:new_attributes) do
-        { number: 'Train2' }
+        { number: 'Train2', current_station: create(:railway_station) }
       end
 
       it 'updates the requested train' do

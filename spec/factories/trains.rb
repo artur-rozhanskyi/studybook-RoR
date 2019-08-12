@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :train do
-    number { 'qwerty' }
+    number { 'Number' }
     current_station { create(:railway_station) }
-    route
+    routes { [create(:route)] }
   end
 end
