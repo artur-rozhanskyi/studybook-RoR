@@ -8,4 +8,6 @@ RSpec.describe Ticket, type: :model do
   it { expect(ticket).to belong_to(:first_station).class_name('RailwayStation') }
 
   it { expect(ticket).to belong_to(:last_station).class_name('RailwayStation') }
+
+  it { expect(ticket).to belong_to(:user) }
 end

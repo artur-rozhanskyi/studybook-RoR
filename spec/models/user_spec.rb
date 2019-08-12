@@ -6,4 +6,6 @@ RSpec.describe User, type: :model do
   it 'is valid with valid attributes' do
     expect(build(:user)).to be_valid
   end
+
+  it { expect(user).to have_many(:tickets) }
 end

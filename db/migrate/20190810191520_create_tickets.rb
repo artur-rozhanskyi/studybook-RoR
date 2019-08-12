@@ -1,9 +1,9 @@
 class CreateTickets < ActiveRecord::Migration[5.2]
   def change
     create_table :tickets do |t|
-      t.references :train
-      t.references :first_station, foreign_key: { to_table: :railway_station }
-      t.references :last_station, foreign_key: { to_table: :railway_station }
+      t.integer :train_id
+      t.integer :first_station_id, foreign_key: { to_table: :railway_station }
+      t.integer :last_station_id, foreign_key: { to_table: :railway_station }
     end
   end
 end

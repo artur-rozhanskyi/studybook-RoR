@@ -1,6 +1,8 @@
 FactoryBot.define do
   factory :ticket do
-    train { build(:train) }
+    train
+
+    user
 
     trait :with_path do
       before(:create) do |t|

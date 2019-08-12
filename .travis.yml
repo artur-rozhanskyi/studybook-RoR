@@ -2,10 +2,16 @@ language: ruby
 rvm:
   - 2.6.3
 
+services:
+  - riak
+  - rabbitmq
+  - memcached
+
 install:
   - gem install bundler
   - bundle install
 script:
+  - bundle exec rake db:drop
   - bundle exec rake db:create
   - bundle exec rake db:migrate
   - bundle exec rubocop .
