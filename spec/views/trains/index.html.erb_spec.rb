@@ -2,14 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'trains/index', type: :view do
   before do
-    assign(:trains, [
-             Train.create!(
-               number: 'Number'
-             ),
-             Train.create!(
-               number: 'Number'
-             )
-           ])
+    assign(:trains, [create(:train), create(:train)])
   end
 
   it 'renders a list of trains' do
