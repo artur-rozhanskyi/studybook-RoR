@@ -28,11 +28,11 @@ RSpec.describe TrainsController, type: :controller do
   # Train. As you add validations to Train, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) do
-    { number: '12345', current_station: create(:railway_station) }
+    { number: '12345', current_station_id: create(:railway_station).id, routes: [create(:route)] }
   end
 
   let(:invalid_attributes) do
-    { number: nil,  current_station: create(:railway_station) }
+    { number: nil,  current_station_id: create(:railway_station).id }
   end
 
   # This should return the minimal set of values that should be in the session
@@ -96,7 +96,7 @@ RSpec.describe TrainsController, type: :controller do
   describe 'PUT #update' do
     context 'with valid params' do
       let(:new_attributes) do
-        { number: 'Train2', current_station: create(:railway_station) }
+        { number: 'Train2', current_station_id: create(:railway_station).id, routes: [create(:route)] }
       end
 
       it 'updates the requested train' do

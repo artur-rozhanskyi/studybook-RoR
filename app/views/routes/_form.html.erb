@@ -1,6 +1,4 @@
-<h1>Edit Route</h1>
-
-<%= form_for(@route) do |form| %>
+<%= form_with(model: route, local: true, class: 'form-horizontal') do |form| %>
   <%= render 'common/error', resource: @route %>
 
   <div class="field">
@@ -12,6 +10,3 @@
     <%= form.submit %>
   </div>
 <% end %>
-
-
-<%= link_to 'Back', routes_path %>
