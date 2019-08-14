@@ -25,5 +25,16 @@
   <% end %>
 </p>
 
+<p>  
+  <strong>Carriages</strong>
+  <ul>
+    <% @train.carriages.each do |carriage| %>
+       <%=  "Type #{carriage.carriage_type.name} | 
+       Upper places: #{carriage.upper_places}   |
+       Bottom places: #{carriage.bottom_places}" %>
+    <% end %>
+  </ul>
+</p>
+
 <%= link_to 'Edit', edit_train_path(@train) %> |
 <%= link_to 'Back', trains_path %>

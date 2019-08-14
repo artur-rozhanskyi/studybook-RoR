@@ -1,0 +1,24 @@
+<%= link_to 'Edit', edit_carriage_path(@carriage) %> |
+<%= link_to 'Back', carriages_path %>
+
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Carriage type:</strong>
+  <%= @carriage.carriage_type.name %>
+</p>
+
+<p>
+  <strong>Train:</strong>
+    <%= @carriage.train.number %>
+</p>
+
+<p>
+  <strong>Bottom places:</strong>
+  <%= @carriage.bottom_places %>
+</p>
+
+<p>
+  <strong>Upper places:</strong>
+  <%= @carriage.upper_places %>
+</p>
