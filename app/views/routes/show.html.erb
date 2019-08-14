@@ -1,3 +1,6 @@
+<%= link_to 'Edit', edit_route_path(@route) %> |
+<%= link_to 'Back', routes_path %>
+
 <p id="notice"><%= notice %></p>
 
 <p>
@@ -5,5 +8,28 @@
   <%= @route.name %>
 </p>
 
-<%= link_to 'Edit', edit_route_path(@route) %> |
-<%= link_to 'Back', routes_path %>
+<p>
+  <strong>Trains:</strong>
+  <ul>
+    <% if @route.trains.present? %>
+      <% @route.trains.each do |train| %>
+        <li><%= train.number %></li>
+      <% end %>
+    <% else %>
+      There are no trains on the route
+    <% end %>
+  </ul>
+</p>
+
+<p>
+  <strong>Stations:</strong>
+  <ul>
+    <% if @route.railway_stations.present? %>
+      <% @route.railway_stations.each do |railway_station| %>
+        <li><%= railway_station.number %></li>
+      <% end %>
+    <% else %>
+      There are no staion on the route
+    <% end %>
+  </ul>
+</p>

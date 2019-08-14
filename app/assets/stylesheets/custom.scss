@@ -1,0 +1,73 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+/*примеси и переменные*/
+
+$gray-medium-light: #eaeaea;
+
+
+a{
+  color: #555;
+  margin-top: 10px;
+  &:hover{
+    color: $gray-darker;
+    text-decoration: underline;
+    background-color: transparent;
+  }
+}
+
+
+h1{
+  text-align: center;
+}
+
+
+footer{
+  bottom: 0;
+  margin-top: 45px;
+  padding-top: 5px;
+  border-top: 1px solid $gray-medium-light;
+  color: $gray-light;
+  small{
+    float: left;
+  }
+}
+
+header{
+  overflow: hidden;
+  ul{
+    float: right;
+    list-style: none;
+    li{
+      float: left;
+      margin-left: 15px;
+    }
+  }
+}
+
+.table{
+  margin-top: 30px;
+}
+
+form.form-horizontal
+{
+  margin-top: 30px;
+  font-size: 15px;
+  & > div{
+    @extend .form-group
+  }
+  label{
+    @extend .control-label, .col-sm-2;
+    font-weight: 500;
+  }
+  .checkbox-list
+  {
+    float: left;
+    & .checkbox{
+      padding: 0;
+    }
+  }
+  .actions{
+    text-align: center;
+  }
+}

@@ -2,7 +2,9 @@
 
 <h1>Railway Stations</h1>
 
-<table>
+<%= link_to 'New Railway Station', new_railway_station_path %>
+
+<table class="table table-striped">
   <thead>
     <tr>
       <th>Name</th>
@@ -11,17 +13,8 @@
   </thead>
 
   <tbody>
-    <% @railway_stations.each do |railway_station| %>
-      <tr>
-        <td><%= railway_station.name %></td>
-        <td><%= link_to 'Show', railway_station %></td>
-        <td><%= link_to 'Edit', edit_railway_station_path(railway_station) %></td>
-        <td><%= link_to 'Destroy', railway_station, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
+    <%= render @railway_stations %>
   </tbody>
 </table>
 
 <br>
-
-<%= link_to 'New Railway Station', new_railway_station_path %>
