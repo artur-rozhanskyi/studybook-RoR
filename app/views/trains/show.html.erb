@@ -25,13 +25,20 @@
   <% end %>
 </p>
 
-<p>  
+<p>
   <strong>Carriages</strong>
+  <p>
+    <% count_carraiage_types(@train).each do |key, value| %>
+      <%=  "#{key.capitalize} - #{value}" %>
+    <% end %>
+  </p>
   <ul>
     <% @train.carriages.each do |carriage| %>
-       <%=  "Type #{carriage.carriage_type.name} | 
-       Upper places: #{carriage.upper_places}   |
-       Bottom places: #{carriage.bottom_places}" %>
+       <li>
+          <%=  "Type #{carriage.carriage_type.name} | 
+         Upper places: #{carriage.upper_places}   |
+         Bottom places: #{carriage.bottom_places}" %>
+       </li>
     <% end %>
   </ul>
 </p>
