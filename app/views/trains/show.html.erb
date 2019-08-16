@@ -28,20 +28,20 @@
 <p>
   <strong>Carriages</strong>
   <p>
-    <% count_carraiage_types(@train).each do |key, value| %>
+    <% @train.count_carraiage_types(@train).each do |key, value| %>
       <%=  "#{key.capitalize} - #{value}" %>
     <% end %>
   </p>
+
   <p>      
     <strong>Amount places:</strong>
     <ul>
-      <% places = count_carraiage_places(@train) %>
-      <% @train.carriages.map(&:carriage_type).map(&:name).uniq.each do |type_name| %>
+      <% @train.count_carraiage_places.each do |key, hash| %>
           <li>
-            <%= "#{type_name.capitalize} upper places:" %>
-            <%= places[:upper_places][type_name] %>
+            <%= "#{key.capitalize} upper places:" %>
+            <%= hash[:upper_places] %>
             <%= ", bottom places: " %>
-            <%= places[:bottom_places][type_name] %>
+            <%= hash[:bottom_places] %>
           </li>
       <% end %>
     </ul>
