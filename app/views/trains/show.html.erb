@@ -32,15 +32,20 @@
       <%=  "#{key.capitalize} - #{value}" %>
     <% end %>
   </p>
-  <ul>
-    <% @train.carriages.each do |carriage| %>
-       <li>
-          <%=  "Type #{carriage.carriage_type.name} | 
-         Upper places: #{carriage.upper_places}   |
-         Bottom places: #{carriage.bottom_places}" %>
-       </li>
-    <% end %>
-  </ul>
+  <p>      
+    <strong>Amount places:</strong>
+    <ul>
+      <% places = count_carraiage_places(@train) %>
+      <% @train.carriages.map(&:carriage_type).map(&:name).uniq.each do |type_name| %>
+          <li>
+            <%= "#{type_name.capitalize} upper places:" %>
+            <%= places[:upper_places][type_name] %>
+            <%= ", bottom places: " %>
+            <%= places[:bottom_places][type_name] %>
+          </li>
+      <% end %>
+    </ul>
+  </p>
 </p>
 
 <%= link_to 'Edit', edit_train_path(@train) %> |
