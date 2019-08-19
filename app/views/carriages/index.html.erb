@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Carriages</h1>
+
+<%= link_to 'New Carriage', new_carriage_path %>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Name</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <%= render @carriages %>
+  </tbody>
+</table>
+
+<br>

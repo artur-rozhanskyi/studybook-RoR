@@ -6,6 +6,13 @@
     <%= form.text_field :name %>
   </div>
 
+  <div class="field">
+      <%= form.label :railway_station_ids %>
+    <div class="checkbox-list">
+       <%= form.collection_select(:railway_station_ids, RailwayStation.all, :id, :name, {}, { multiple: true }) %>
+    </div>
+  </div>
+
   <div class="actions">
     <%= form.submit %>
   </div>

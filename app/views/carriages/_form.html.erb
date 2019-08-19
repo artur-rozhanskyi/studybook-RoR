@@ -1,0 +1,28 @@
+<%= form_with(model: carriage, local: true, class: 'form-horizontal') do |form| %>
+  <%= render 'common/error', resource: @carriage %>
+
+  <div class="field">
+    <%= form.label :carriage_type %>
+    <%= form.collection_select :carriage_type_id, CarriageType.all, :id, :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :bottom_places %>
+    <%= form.text_field :bottom_places %>
+  </div>
+
+
+  <div class="field">
+    <%= form.label :upper_places %>
+    <%= form.text_field :upper_places %>
+  </div>
+
+  <div class="field">
+    <%= form.label :train %>
+    <%= form.collection_select :train_id, Train.all, :id, :number %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

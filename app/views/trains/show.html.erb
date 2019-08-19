@@ -25,5 +25,28 @@
   <% end %>
 </p>
 
+<p>
+  <strong>Carriages</strong>
+  <p>
+    <% @train.count_carraiage_types.each do |key, value| %>
+      <%=  "#{key.capitalize} - #{value}" %>
+    <% end %>
+  </p>
+
+  <p>      
+    <strong>Amount places:</strong>
+    <ul>
+      <% @train.count_carraiage_places.each do |type_counter| %>
+          <li>
+            <%= "#{type_counter[0].capitalize} upper places:" %>
+            <%= type_counter[2] %>
+            <%= ", bottom places: " %>
+            <%= type_counter[1] %>
+          </li>
+      <% end %>
+    </ul>
+  </p>
+</p>
+
 <%= link_to 'Edit', edit_train_path(@train) %> |
 <%= link_to 'Back', trains_path %>

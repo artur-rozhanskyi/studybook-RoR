@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Carriage Types</h1>
+
+<%= link_to 'New Carriage Type', new_carriage_type_path %>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Name</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <%= render @carriage_types %>
+  </tbody>
+</table>
+
+<br>

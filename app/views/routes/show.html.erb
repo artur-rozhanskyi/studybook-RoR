@@ -26,7 +26,7 @@
   <ul>
     <% if @route.railway_stations.present? %>
       <% @route.railway_stations.each do |railway_station| %>
-        <li><%= railway_station.number %></li>
+        <li><%= railway_station.name %></li>
       <% end %>
     <% else %>
       There are no staion on the route

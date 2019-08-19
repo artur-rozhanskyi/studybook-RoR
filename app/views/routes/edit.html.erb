@@ -1,17 +1,7 @@
 <h1>Edit Route</h1>
 
-<%= form_for(@route) do |form| %>
-  <%= render 'common/error', resource: @route %>
+<%= render 'common/error', resource: @route %>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
-
+<%= render 'form', route: @route %>
 
 <%= link_to 'Back', routes_path %>
