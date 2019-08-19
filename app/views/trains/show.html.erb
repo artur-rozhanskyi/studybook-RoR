@@ -36,12 +36,12 @@
   <p>      
     <strong>Amount places:</strong>
     <ul>
-      <% @train.count_carraiage_places.each do |obj| %>
+      <% @train.count_carraiage_places.each do |type_counter| %>
           <li>
-            <%= "#{obj[0].capitalize} upper places:" %>
-            <%= obj[2] %>
+            <%= "#{type_counter[0].capitalize} upper places:" %>
+            <%= type_counter[2] %>
             <%= ", bottom places: " %>
-            <%= obj[1] %>
+            <%= type_counter[1] %>
           </li>
       <% end %>
     </ul>
