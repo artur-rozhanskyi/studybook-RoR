@@ -2,8 +2,8 @@
   <%= render 'common/error', resource: @carriage %>
 
   <div class="field">
-    <%= form.label :carriage_type %>
-    <%= form.collection_select :carriage_type_id, CarriageType.all, :id, :name %>
+    <%= form.label :trains %>
+    <%= form.collection_select :trains, Train.all, :id, :number %>
   </div>
 
   <div class="field">
