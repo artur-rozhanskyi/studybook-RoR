@@ -2,11 +2,11 @@ require 'rails_helper'
 
 RSpec.describe RoutesController, type: :controller do
   let(:valid_attributes) do
-    { name: 'Route 1' }
+    { railway_station_ids: [create(:railway_station).id, create(:railway_station).id] }
   end
 
   let(:invalid_attributes) do
-    { name: nil }
+    { railway_station_ids: [create(:railway_station).id] }
   end
 
   let(:valid_session) { {} }
@@ -65,14 +65,16 @@ RSpec.describe RoutesController, type: :controller do
 
   describe 'PUT #update' do
     context 'with valid params' do
+      let(:railway_station_first) { create(:railway_station) }      
+      let(:railway_station_last) { create(:railway_station) }
       let(:new_attributes) do
-        { name: 'Route 2' }
+        { railway_station_ids: [create(:railway_station).id, create(:railway_station).id] }
       end
 
       it 'updates the requested route' do
         put :update, params: { id: route.to_param, route: new_attributes }, session: valid_session
         route.reload
-        expect(route.name).to eq(new_attributes[:name])
+        expect(route.name).to eq("#{railway_station_first.name} - #{railway_station_last.name}")
       end
 
       it 'redirects to the route' do

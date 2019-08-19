@@ -29,6 +29,7 @@ class RoutesController < ApplicationController
     else
       render :edit
     end
+    set_station_position(route_params[:railway_station_ids])
   end
 
   def destroy
@@ -39,10 +40,20 @@ class RoutesController < ApplicationController
   private
 
   def route_params
-    params.require(:route).permit(:name, railway_station_ids: [])
+    params.require(:route).permit(railway_station_ids: [])
   end
 
   def set_route
     @route = Route.find(params[:id])
+  end
+
+  def set_station_position(stations)
+    # stations_in_table = 
+    # binding.pry
+    @route.railway_stations_routes.map.with_index { |s, i|
+      # binding.pry
+      s.position = stations.find(s.railway_station_id)
+    }
+    stations_in_table.each(&:save)
   end
 end
