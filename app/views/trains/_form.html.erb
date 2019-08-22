@@ -17,6 +17,11 @@
     <%= form.collection_select :current_station_id, RailwayStation.all, :id, :name %>
   </div>
 
+  <div class="field">
+    <%= form.label :sort, "From head"%>
+    <%= form.check_box :sort %>
+  </div>
+
   <div class="actions">
     <%= form.submit class: 'btn btn-default' %>
   </div>

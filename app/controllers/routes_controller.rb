@@ -13,7 +13,6 @@ class RoutesController < ApplicationController
 
   def create
     @route = Route.new(route_params)
-
     if @route.save
       redirect_to @route
     else
@@ -29,7 +28,6 @@ class RoutesController < ApplicationController
     else
       render :edit
     end
-    set_station_position(route_params[:railway_station_ids])
   end
 
   def destroy
@@ -45,15 +43,5 @@ class RoutesController < ApplicationController
 
   def set_route
     @route = Route.find(params[:id])
-  end
-
-  def set_station_position(stations)
-    # stations_in_table = 
-    # binding.pry
-    @route.railway_stations_routes.map.with_index { |s, i|
-      # binding.pry
-      s.position = stations.find(s.railway_station_id)
-    }
-    stations_in_table.each(&:save)
   end
 end

@@ -7,12 +7,13 @@
 <table class="table table-striped">
   <thead>
     <tr>
-      <th>Name</th>
+      <th>Train Number</th>
+      <th>Carriage Number</th>
     </tr>
   </thead>
 
   <tbody>
-    <%= render @carriages %>
+    <%= render partial: 'carriages/carriage', collection: @carriages, as: :carriage %>
   </tbody>
 </table>
 

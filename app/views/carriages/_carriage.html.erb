@@ -1,6 +1,13 @@
-<tr>
-  <td><%= carriage.train.number %></td>
-  <td><%= link_to 'Show', carriage %></td>
-  <td><%= link_to 'Edit', edit_carriage_path(carriage) %></td>
-  <td><%= link_to 'Destroy', carriage, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-</tr>
+<% present(carriage.becomes(Carriage)) do |car| %>
+  <tr>  
+    <td>
+      <%= car.train ? link_to(car.train.number, controller: "trains", action: "show", id: car.train) : "No train"  %>
+    </td>
+    <td>
+      <%= car.number ? link_to(car.number, controller: "carriages", action: "show", id: car) : "No number"  %>
+    </td>
+    <td><%= link_to 'Edit', edit_carriage_path(car) %></td>
+    <td><%= link_to 'Destroy', { :controller => 'carriages', :action => 'destroy', :id => car },
+                          { :confirm => 'Are you sure?', :method => :delete, :remote => true}%></td>
+  </tr>
+<% end %>

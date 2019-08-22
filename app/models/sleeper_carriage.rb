@@ -1,3 +1,3 @@
-class SleeperCarriage < Carriage  
-  validates :bottom_places, presence: true  
+class SleeperCarriage < Carriage
+  validates :bottom_places, presence: true
 end

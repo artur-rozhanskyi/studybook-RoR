@@ -65,7 +65,7 @@ RSpec.describe RoutesController, type: :controller do
 
   describe 'PUT #update' do
     context 'with valid params' do
-      let(:railway_station_first) { create(:railway_station) }      
+      let(:railway_station_first) { create(:railway_station) }
       let(:railway_station_last) { create(:railway_station) }
       let(:new_attributes) do
         { railway_station_ids: [create(:railway_station).id, create(:railway_station).id] }

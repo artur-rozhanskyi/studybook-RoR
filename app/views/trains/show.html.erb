@@ -29,22 +29,16 @@
   <strong>Carriages</strong>
   <p>
     <% train.count_carraiage_types.each do |key, value| %>
-      <%=  "#{key.capitalize} - #{value}" %>
+      <%=  "#{key.remove('Carriage')} - #{value}" %>
     <% end %>
   </p>
 
-  <p>      
-    <strong>Amount places:</strong>
-    <ul>
-      <% train.count_carraiage_places.each do |type_counter| %>
-          <li>
-            <%= "#{type_counter[0].capitalize} upper places:" %>
-            <%= type_counter[2] %>
-            <%= ", bottom places: " %>
-            <%= type_counter[1] %>
-          </li>
-      <% end %>
-    </ul>
+  <p>
+    Carriages numbers: HEAD
+    <% train.sorted_carriage.each do |carriage| %>
+      <%= link_to carriage.number , controller: "carriages", action: "show", id: carriage  %> |
+    <% end %>
+    TAIL
   </p>
 </p>
 

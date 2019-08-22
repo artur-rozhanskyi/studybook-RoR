@@ -1,24 +1,28 @@
-<%= link_to 'Edit', edit_carriage_path(@carriage) %> |
-<%= link_to 'Back', carriages_path %>
+<% present(@carriage) do |carriage| %>
+  <%= link_to 'Edit', edit_carriage_path(@carriage) %> |
+  <%= link_to 'Back', carriages_path %>
 
-<p id="notice"><%= notice %></p>
+  <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Carriage type:</strong>
-  <%= @carriage.carriage_type.name %>
-</p>
+  <p>
+    <strong>Carriage type:</strong>
+    <%= carriage.type.remove("Carriage") %>
+  </p>
 
-<p>
-  <strong>Train:</strong>
-    <%= @carriage.train.number %>
-</p>
+  <p>
+    <strong>Train:</strong>
+      <%= carriage.train ? carriage.train.number : "No train" %>
+  </p>
 
-<p>
-  <strong>Bottom places:</strong>
-  <%= @carriage.bottom_places %>
-</p>
+  <p>
+    <strong>Number:</strong>
+    <%= carriage.number %>
+  </p>
 
-<p>
-  <strong>Upper places:</strong>
-  <%= @carriage.upper_places %>
-</p>
+  <% carriage.places.each do |place, value| %>
+    <p>
+      <strong><%= place.to_s.gsub("_", " ").capitalize %></strong>
+      <%= value %>
+    </p>
+  <% end %>
+<% end %>

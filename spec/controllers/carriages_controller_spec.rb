@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe CarriagesController, type: :controller do
   let(:valid_attributes) do
-    { bottom_places: 26, upper_places: 26, carriage_type_id: create(:carriage_type).id, train_id: create(:train).id }
+    { bottom_places: 26, upper_places: 26, train_id: create(:train).id }
   end
 
   let(:invalid_attributes) do

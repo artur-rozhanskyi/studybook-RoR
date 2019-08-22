@@ -8,9 +8,15 @@ class Train < ApplicationRecord
   has_many :carriages, dependent: :nullify
 
   def count_carraiage_places
-    CarriageType.joins(:carriages)
-                .where(carriages: { train_id: carriages })
-                .group(:name)
-                .pluck(Arel.sql('carriage_types.name, SUM(bottom_places), SUM(upper_places)'))
+    query = 'type, SUM(bottom_places), SUM(upper_places), SUM(side_upper_places), SUM(side_bottom_places), SUM(seats)'
+    carriages.group(:type).pluck(Arel.sql(query))
+  end
+
+  def carriages_head
+    carriages.order(:number)
+  end
+
+  def carriages_tail
+    carriages.order('number DESC')
   end
 end
