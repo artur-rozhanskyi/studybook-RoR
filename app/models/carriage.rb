@@ -1,9 +1,18 @@
 class Carriage < ApplicationRecord
-  validates :bottom_places, presence: true
-  validates :upper_places, presence: true
-  validates :carriage_type, presence: true
-  validates :train, presence: true
-
-  belongs_to :carriage_type
   belongs_to :train
+  validates :number, uniqueness: { scope: :train_id }
+   
+  before_validation :set_number
+
+  default_scope { order(:train, :number) }
+
+  protected
+
+  def set_number
+    write_attribute(:number, carriage_number )
+  end
+
+  def carriage_number    
+    train.carriages.present? ? train.carriages.map(&:number).max + 1 : 1
+  end
 end

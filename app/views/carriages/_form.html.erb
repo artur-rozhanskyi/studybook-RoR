@@ -1,25 +1,45 @@
-<%= form_with(model: carriage, local: true, class: 'form-horizontal') do |form| %>
+<%= form_with(model: carriage.becomes(Carriage), local: true, class: 'form-horizontal') do |form| %>
   <%= render 'common/error', resource: @carriage %>
 
-  <div class="field">
-    <%= form.label :carriage_type %>
-    <%= form.collection_select :carriage_type_id, CarriageType.all, :id, :name %>
+  <div>
+   <%= form.label :type %>
+   <% select_list = {
+      'Coupe': 'CoupeCarriage',
+      'Economy': 'EconomyCarriage',
+      'Seating': 'SeatingCarriage',
+      'Sleeper': 'SleeperCarriage'
+    } %>
+    <%= form.select :type, select_list, {}, { class: 'class_type'} %>
   </div>
 
-  <div class="field">
+  <div>
+    <%= form.label :train, "Train" %>
+    <%= form.collection_select :train_id, Train.all, :id, :number %>
+  </div>
+
+  <div class="field coupe economy sleeper">
     <%= form.label :bottom_places %>
     <%= form.text_field :bottom_places %>
   </div>
 
-
-  <div class="field">
+  <div class="field coupe economy">
     <%= form.label :upper_places %>
     <%= form.text_field :upper_places %>
   </div>
 
-  <div class="field">
-    <%= form.label :train %>
-    <%= form.collection_select :train_id, Train.all, :id, :number %>
+  <div class="field economy">
+    <%= form.label :side_upper_places %>
+    <%= form.text_field :side_upper_places %>
+  </div>
+
+    <div class="field economy">
+    <%= form.label :side_bottom_places %>
+    <%= form.text_field :side_bottom_places %>
+  </div>
+
+  <div class="field seating">
+    <%= form.label :seats %>
+    <%= form.text_field :seats%>
   </div>
 
   <div class="actions">
