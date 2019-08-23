@@ -1,6 +1,6 @@
 <% present(@carriage) do |carriage| %>
-  <%= link_to 'Edit', edit_carriage_path(@carriage) %> |
-  <%= link_to 'Back', carriages_path %>
+  <%= link_to 'Edit', edit_carriage_path(carriage) %> |
+  <%= link_to 'Back', carriage.train %>
 
   <p id="notice"><%= notice %></p>
 

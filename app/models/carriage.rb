@@ -9,10 +9,14 @@ class Carriage < ApplicationRecord
   protected
 
   def set_number
-    write_attribute(:number, carriage_number )
+    write_attribute(:number, new_carriage_number)
   end
 
-  def carriage_number    
-    train.carriages.present? ? train.carriages.map(&:number).max + 1 : 1
+  def new_carriage_number
+    carriage_numbers.size.zero? ? 1 : carriage_numbers.max + 1
+  end
+
+  def carriage_numbers
+    train.carriages.map(&:number).compact
   end
 end
