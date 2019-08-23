@@ -32,11 +32,12 @@ ActiveRecord::Schema.define(version: 2019_08_21_064931) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "railway_stations_routes", id: false, force: :cascade do |t|
-    t.integer "route_id"
-    t.integer "railway_station_id"
+  create_table "railway_stations_routes", force: :cascade do |t|
+    t.integer "route_id", null: false
+    t.integer "railway_station_id", null: false
     t.integer "position"
     t.index ["railway_station_id"], name: "index_railway_stations_routes_on_railway_station_id"
+    t.index ["route_id", "railway_station_id"], name: "index_railway_stations_routes", unique: true
     t.index ["route_id"], name: "index_railway_stations_routes_on_route_id"
   end
 

@@ -23,13 +23,34 @@
 
 <p>
   <strong>Stations:</strong>
-  <ul>
-    <% if @route.railway_stations.present? %>
-      <% @route.railway_stations.each do |railway_station| %>
-        <li><%= railway_station.name %></li>
-      <% end %>
-    <% else %>
-      There are no staion on the route
-    <% end %>
-  </ul>
+  <% if @route.railway_stations.present? %>
+    <div class="row">
+      <table id="table-route-stations" class="table table-striped col-lg-6 col-md-6">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Position</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @route.railway_stations.each do |railway_station| %>
+            <tr>
+              <td><%= railway_station.name %></td>
+              <td>              
+                <%= form_tag update_position_railway_station_path(railway_station), method: :patch do %>
+                  <%= number_field_tag :position, railway_station.position_in(@route) %>
+                  <%= hidden_field_tag :route_id, @route.id %>
+                  <%= submit_tag "Update" %>
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  <% else %>
+    There are no staion on the route
+  <% end %>
 </p>
+  
+<br>
