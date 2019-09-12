@@ -1,0 +1,9 @@
+<h1>Search</h1>
+
+<%=  form_tag search_path, method: :post do %>
+  <%= label_tag :starting %>
+  <%= select_tag :starting, options_for_select(station_list) %>
+  <%= label_tag :destination %>
+  <%= select_tag :destination, options_for_select(station_list) %>
+  <%= submit_tag "Search" %>
+<% end %>
