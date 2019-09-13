@@ -1,12 +1,20 @@
 class SearchesController < ApplicationController
   def show
-    binding.pry
-  end
-  
-  def trains(start, destination)
-    # RailwayStationsRoute.joins(:route).where(railway_station:  [1, 2])
-
-    # Route.joins(routes: :railway_stations).where("railway_stations_routes.railway_station_id", 1).select("route.name").where("railway_stations_routes.railway_station_id", 2).select("route.name")
+    if search_params[:starting] && search_params[:destination]
+      @data = {results: result, starting: search_params[:starting], destination: search_params[:destination]}
+    end
   end
 
+  private
+
+  def search_params
+    params.permit(:starting, :destination)
+  end
+
+  def result
+     RailwayStationsRoute.joins("JOIN railway_stations_routes as t on t.route_id = railway_stations_routes.route_id")
+                         .where("t.railway_station_id = ?", search_params[:starting])
+                         .where("railway_stations_routes.railway_station_id  = ?", search_params[:destination])
+                         .where("railway_stations_routes.position > t.position")
+  end
 end

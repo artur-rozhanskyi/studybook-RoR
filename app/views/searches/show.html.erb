@@ -1,9 +1,31 @@
 <h1>Search</h1>
 
-<%=  form_tag search_path, method: :post do %>
+<h2>Новый поиск</h2>
+<%= form_tag search_path, method: :get do %>
   <%= label_tag :starting %>
   <%= select_tag :starting, options_for_select(station_list) %>
   <%= label_tag :destination %>
   <%= select_tag :destination, options_for_select(station_list) %>
   <%= submit_tag "Search" %>
+<% end %>
+
+<% if @data %>
+  <h2>Results</h2>
+  <% if @data[:results].present? %>
+    <ul>
+      <% @data[:results].each do |result| %>
+        <li><%= route_name(result.route_id) %></li>
+        <ul>
+          <% trains(result.route_id).each do |train| %>
+            <li><%= train.number %></li>
+            <li>Arrival:<%= find_railway_stations_route(result.route_id, @data[:starting]).arrival %></li>
+            <li>Departure: <%= find_railway_stations_route(result.route_id, @data[:destination]).departure %></li>
+            <li><%= button_tag 'Buy' %></li>
+          <% end %>
+        </ul>
+      <% end %>
+    </ul>
+  <% else %>
+    <p>No routes</p>
+  <% end %>
 <% end %>

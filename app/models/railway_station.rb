@@ -8,33 +8,35 @@ class RailwayStation < ApplicationRecord
   has_many :tickets, dependent: :nullify, foreign_key: :last_station_id, inverse_of: :last_station
 
   def update_position(route, position)
-    station_route = station_route(route)
+    station_route = station_route route
     station_route.update(position: position) if station_route
   end
 
   def update_arrival_time(route, arrival)
-    binding.pry
-    station_route = station_route(route)
-    station_route.update(arrival: flatten_date_array(arrival)) if station_route
+    station_route = station_route route
+    station_route.update(arrival: time(arrival)) if station_route
   end
 
   def update_departure_time(route, departure)
-    station_route = station_route(route)
-    station_route.update(departure: flatten_date_array(departure)) if station_route
+    binding.pry
+    station_route = station_route route
+    station_route.update(departure: time(departure)) if station_route
   end
 
   def time_arrival_in(route)
-    station_route = station_route(route)
-    station_route.try(:arrival)
+    station_route = station_route route
+    date_time = station_route.try(:arrival) ||  Time.zone.now
+    date_time.localtime if date_time
   end
 
   def time_departure_in(route)
-    station_route = station_route(route)
-    station_route.try(:departure)  
+    station_route = station_route route
+    date_time = station_route.try(:departure) ||  Time.zone.now
+    date_time.localtime if date_time
   end
 
   def position_in(route)
-    station_route = station_route(route)
+    station_route = station_route route
     station_route.try(:position)
   end
 
@@ -44,7 +46,12 @@ class RailwayStation < ApplicationRecord
 
   private
 
-  def flatten_date_array hash
-    %w(1 2 3 4 5).map { |e| hash["#{e}i"].to_i }
+  def flatten_date_array(hash)
+    %w[1 2 3 4 5].map { |e| hash["(#{e}i)"].to_i }
+  end
+
+  def time(hash)
+    binding.pry
+    DateTime.strptime(flatten_date_array(hash).join('/'), "%Y/%m/%d/%I/%M")
   end
 end

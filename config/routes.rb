@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     patch :update_position, on: :member
   end
   resources :routes
-  resource :search
+  resource :search, only: [:show]
   get 'welcome/index'
 
   root 'welcome#index'
