@@ -11,16 +11,19 @@
 
 <% if @data %>
   <h2>Results</h2>
-  <% if @data[:results].present? %>
+  <% if @data.present? %>
     <ul>
-      <% @data[:results].each do |result| %>
-        <li><%= route_name(result.route_id) %></li>
+      <% @data.each do |route, data| %>
+        <li><%= route_name(route) %></li>
         <ul>
-          <% trains(result.route_id).each do |train| %>
+          <% trains(route).each do |train| %>
             <li><%= train.number %></li>
-            <li>Arrival:<%= find_railway_stations_route(result.route_id, @data[:starting]).arrival %></li>
-            <li>Departure: <%= find_railway_stations_route(result.route_id, @data[:destination]).departure %></li>
-            <li><%= button_tag 'Buy' %></li>
+            <li>Departure: <%= data[:departure] %></li>
+            <li>Arrival:<%= data[:arrival] %></li>
+            <li>
+              <%= button_to "Buy", new_ticket_path, method: :get, params:{ starting: data[:starting],
+                            destination: data[:destination], train_id: train.id } %>
+            </li>
           <% end %>
         </ul>
       <% end %>

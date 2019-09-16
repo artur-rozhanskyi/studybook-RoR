@@ -1,0 +1,58 @@
+<%= form_with(model: @ticket, local: true, class: 'form-horizontal') do |form| %>
+  <%= render 'common/error', resource: @ticket %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :middle_name %>
+    <%= form.text_field :middle_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :last_name %>
+    <%= form.text_field :last_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :passport_id %>
+    <%= form.text_field :passport_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :train %>
+    <p><%= @ticket.train.number %></p>
+    <%= form.hidden_field(:train_id, value: @ticket.train.id) %>
+  </div>
+
+  <div class="field">
+    <%= form.label :starting %>
+    <p><%= @ticket.first_station.name %></p>
+    <%= form.hidden_field(:first_station_id, value: @ticket.first_station.id) %>
+  </div>
+
+  <div class="field">
+    <%= form.label :destination %>
+    <p><%= @ticket.last_station.name %></p>
+    <%= form.hidden_field(:last_station_id, value: @ticket.last_station.id) %>
+  </div>
+
+  <div class="field">
+    <%= form.label :departure %>
+    <p><%= @ticket.departure %></p>
+    <%= form.hidden_field(:departure, value: @ticket.departure) %>
+  </div>
+
+
+  <div class="field">
+    <%= form.label :arrival %>
+    <p><%= @ticket.arrival %></p>
+    <%= form.hidden_field(:arrival, value: @ticket.arrival) %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_28_204640) do
+ActiveRecord::Schema.define(version: 2019_09_16_141047) do
 
   create_table "carriages", force: :cascade do |t|
     t.integer "bottom_places"
@@ -59,6 +59,12 @@ ActiveRecord::Schema.define(version: 2019_08_28_204640) do
     t.integer "first_station_id"
     t.integer "last_station_id"
     t.integer "user_id"
+    t.string "name"
+    t.string "middle_name"
+    t.string "last_name"
+    t.string "passport"
+    t.datetime "arrival"
+    t.datetime "departure"
     t.index ["user_id"], name: "index_tickets_on_user_id"
   end
 
