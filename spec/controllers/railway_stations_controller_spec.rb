@@ -133,4 +133,28 @@ RSpec.describe RailwayStationsController, type: :controller do
       expect(response).to redirect_to(railway_stations_url)
     end
   end
+
+  describe 'PATCH #update_station' do
+    before { railway_station }
+
+    let(:position) do
+      { position: 1 }
+    end
+
+    let(:arrival) do
+      { position: DateTime.now }
+    end
+
+    let(:departure) do
+      { position: DateTime.now }
+    end
+
+    it 'update railway_station arrival time' do
+      patch :update_station, params: { id: railway_station.to_param, arrival: arrival.to_param },
+                              session: valid_session
+      railway_station.reload
+      expect(railway_station.arrival).to eq(arrival)
+    end
+  end
+
 end

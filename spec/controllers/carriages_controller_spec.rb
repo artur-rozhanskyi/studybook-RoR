@@ -6,12 +6,12 @@ RSpec.describe CarriagesController, type: :controller do
   end
 
   let(:invalid_attributes) do
-    { bottom_places: "", upper_places: "", type: carriage.class.to_s }
+    { bottom_places: '', upper_places: '', type: carriage.class.to_s }
   end
 
   let(:valid_session) { {} }
 
-  let(:carriage) { create(:coupe) }
+  let(:carriage) { create(:coupe, :train) }
 
   describe 'GET #index' do
     it 'returns a success response' do
@@ -72,13 +72,15 @@ RSpec.describe CarriagesController, type: :controller do
       end
 
       it 'updates the requested carriage' do
-        put :update, params: { id: carriage.to_param, carriage: new_attributes, train_id: carriage.train_id }, session: valid_session
+        put :update, params: { id: carriage.to_param, carriage: new_attributes, train_id: carriage.train_id },
+                     session: valid_session
         carriage.reload
         expect(carriage.bottom_places).to eq(new_attributes[:bottom_places])
       end
 
       it 'redirects to the carriage' do
-        put :update, params: { id: carriage.to_param, carriage: valid_attributes, train_id: carriage.train_id }, session: valid_session
+        put :update, params: { id: carriage.to_param, carriage: valid_attributes, train_id: carriage.train_id },
+                     session: valid_session
         expect(response).to redirect_to(carriage.becomes(Carriage))
       end
     end

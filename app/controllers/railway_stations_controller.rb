@@ -35,7 +35,7 @@ class RailwayStationsController < ApplicationController
     redirect_to railway_stations_path, notice: 'Railway station was successfully destroyed.'
   end
 
-  def update_position
+  def update_station
     @route = Route.find(params[:route_id])
     @railway_station.update_position(@route, params[:position])
     @railway_station.update_time(@route, params[:arrival], :arrival)

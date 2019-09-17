@@ -12,7 +12,7 @@ class Carriage < ApplicationRecord
     self[:number] = new_carriage_number
   end
 
-  def new_carriage_number 
+  def new_carriage_number
     carriage_numbers.size.zero? ? 1 : carriage_numbers.max + 1
   end
 

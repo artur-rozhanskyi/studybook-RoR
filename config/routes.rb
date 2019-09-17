@@ -3,7 +3,7 @@ Rails.application.routes.draw do
     resources :carriages, shallow: true
   end
   resources :railway_stations do
-    patch :update_position, on: :member
+    patch :update_station, on: :member
   end
   resources :routes
   resource :search, only: [:show]
