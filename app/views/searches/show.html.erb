@@ -12,22 +12,40 @@
 <% if @data %>
   <h2>Results</h2>
   <% if @data.present? %>
-    <ul>
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th>Route</th>
+        <th>Train</th>
+        <th>Departure</th>
+        <th>Arrival</th>
+        <th></th>
+      </tr>
+      </thead>
+      <tbody>
       <% @data.each do |route, data| %>
-        <li><%= route_name(route) %></li>
-        <ul>
+      <tr>
+        <td><%= route_name(route) %></td>
           <% trains(route).each do |train| %>
-            <li><%= train.number %></li>
-            <li>Departure: <%= data[:departure] %></li>
-            <li>Arrival:<%= data[:arrival] %></li>
-            <li>
-              <%= button_to "Buy", new_ticket_path, method: :get, params:{ starting: data[:starting],
-                            destination: data[:destination], train_id: train.id } %>
-            </li>
+            <tr>
+              <td></td>
+              <td><%= train.number %></td>
+              <td><%= data[:departure] %></td>
+              <td><%= data[:arrival] %></td>
+              <td>
+                <%= button_to "Buy", new_ticket_path, method: :get,
+                              params:{ starting: data[:starting],
+                                       destination: data[:destination],
+                                       arrival: data[:arrival],
+                                       departure: data[:departure],
+                                       train_id: train.id } %>
+              </td>
+            </tr>
           <% end %>
-        </ul>
+      </tr>
       <% end %>
-    </ul>
+      </tbody>
+    </table>
   <% else %>
     <p>No routes</p>
   <% end %>

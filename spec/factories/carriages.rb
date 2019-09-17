@@ -1,8 +1,13 @@
 FactoryBot.define do
-  factory :carriage do
+  factory :carriage, class: Carriage do
     bottom_places { 26 }
     upper_places { 26 }
-    type { 'ExpressCarriage' }
-    train { create(:train) }
+    train
+  end
+
+  factory :coupe, class: CoupeCarriage do
+    bottom_places { 26 }
+    upper_places { 26 }
+    train
   end
 end

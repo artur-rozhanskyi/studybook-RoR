@@ -14,11 +14,10 @@ Train.delete_all
 stations_params = []
 
 10.times do
-  stations_params << {name: Faker::Address.city}
+  stations_params << { name: Faker::Address.city }
 end
 
 stations = RailwayStation.create(stations_params)
-
 
 routes_params = []
 
@@ -28,8 +27,8 @@ routes_params = []
     stats << stations.sample
   end
   routes_params << {
-      name: Faker::Lorem.sentence,
-      railway_stations: stats.uniq
+    name: Faker::Lorem.sentence,
+    railway_stations: stats.uniq
   }
 end
 
@@ -44,14 +43,13 @@ end
 
 trains = Train.create(trains_params)
 
-
 coupe_carriages_params = []
 
 (0..100).each do |number|
   coupe_carriages_params << { number: number, train: trains.sample }
 end
 
-coupe_carriages = CoupeCarriage.create(coupe_carriages_params)
+CoupeCarriage.create(coupe_carriages_params)
 
 economy_carriages_params = []
 
@@ -59,4 +57,4 @@ economy_carriages_params = []
   economy_carriages_params << { number: number, train: trains.sample }
 end
 
-economy_carriages = EconomyCarriage.create(economy_carriages_params)
+EconomyCarriage.create(economy_carriages_params)

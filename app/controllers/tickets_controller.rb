@@ -1,6 +1,10 @@
 class TicketsController < ApplicationController
   before_action :set_ticket, only: [:show]
 
+  def index
+    @tickets = Ticket.all
+  end
+
   def show; end
 
   def new
@@ -13,9 +17,7 @@ class TicketsController < ApplicationController
 
   def create
     @ticket = Ticket.new(ticket_params)
-    if @ticket.save
-      redirect_to @ticket
-    end
+    redirect_to @ticket if @ticket.save
   end
 
   private

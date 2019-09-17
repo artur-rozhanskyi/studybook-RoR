@@ -9,30 +9,17 @@ class RailwayStation < ApplicationRecord
 
   def update_position(route, position)
     station_route = station_route route
-    station_route.update(position: position) if station_route
+    station_route&.update(position: position)
   end
 
-  def update_arrival_time(route, arrival)
+  def update_time(route, time, method)
     station_route = station_route route
-    station_route.update(arrival: time(arrival)) if station_route
+    station_route&.update(method => time_set(time))
   end
 
-  def update_departure_time(route, departure)
-    binding.pry
+  def time_in(route, method)
     station_route = station_route route
-    station_route.update(departure: time(departure)) if station_route
-  end
-
-  def time_arrival_in(route)
-    station_route = station_route route
-    date_time = station_route.try(:arrival) ||  Time.zone.now
-    date_time.localtime if date_time
-  end
-
-  def time_departure_in(route)
-    station_route = station_route route
-    date_time = station_route.try(:departure) ||  Time.zone.now
-    date_time.localtime if date_time
+    station_route.try(method) || Time.zone.now
   end
 
   def position_in(route)
@@ -41,17 +28,12 @@ class RailwayStation < ApplicationRecord
   end
 
   def station_route(route)
-    @station_route ||= railway_stations_routes.where(route: route).first
+    @station_route ||= railway_stations_routes.find_by(route: route)
   end
 
   private
 
-  def flatten_date_array(hash)
-    %w[1 2 3 4 5].map { |e| hash["(#{e}i)"].to_i }
-  end
-
-  def time(hash)
-    binding.pry
-    DateTime.strptime(flatten_date_array(hash).join('/'), "%Y/%m/%d/%I/%M")
+  def time_set(hash)
+    DateTime.strptime(hash.values.join('/'), '%Y/%m/%d/%H/%M')
   end
 end

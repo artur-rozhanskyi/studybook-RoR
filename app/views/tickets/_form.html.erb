@@ -17,8 +17,8 @@
   </div>
 
   <div class="field">
-    <%= form.label :passport_id %>
-    <%= form.text_field :passport_id %>
+    <%= form.label :passport %>
+    <%= form.text_field :passport %>
   </div>
 
   <div class="field">
@@ -41,14 +41,14 @@
 
   <div class="field">
     <%= form.label :departure %>
-    <p><%= @ticket.departure %></p>
+    <p><%= @ticket.departure.strftime('%H:%M') %></p>
     <%= form.hidden_field(:departure, value: @ticket.departure) %>
   </div>
 
 
   <div class="field">
     <%= form.label :arrival %>
-    <p><%= @ticket.arrival %></p>
+    <p><%= @ticket.arrival.strftime('%H:%M') %></p>
     <%= form.hidden_field(:arrival, value: @ticket.arrival) %>
   </div>
 

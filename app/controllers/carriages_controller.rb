@@ -33,17 +33,17 @@ class CarriagesController < ApplicationController
 
   def destroy
     @carriage.destroy
-    redirect_to carriages_path, notice: 'Carriage was successfully destroyed.'
+    redirect_to @carriage.train, notice: 'Carriage was successfully destroyed.'
   end
 
   private
 
-  def set_train    
+  def set_train
     @train = Train.find(params[:train_id])
   end
 
   def set_carriage
-    @carriage = Carriage.find(params[:id]).becomes(Carriage)
+    @carriage = Carriage.find(params[:id])
   end
 
   def carriage_params
