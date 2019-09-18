@@ -135,26 +135,42 @@ RSpec.describe RailwayStationsController, type: :controller do
   end
 
   describe 'PATCH #update_station' do
-    before { railway_station }
+    let(:station) { create(:railway_station, :with_route) }
+    let(:route) { station.routes.first }
 
-    let(:position) do
-      { position: 1 }
+    let(:position) { 1 }
+
+    let(:time) do
+      { year: 2019, month: 9, day: 10, hour: 10, minute: 10 }
     end
 
-    let(:arrival) do
-      { position: DateTime.now }
+    it 'update railway_station position' do
+      patch :update_station, params: { id: station.to_param, position: position.to_param,
+                                       route_id: route.id },
+                             session: valid_session
+      station.reload
+      expect(station.position_in(route)).to eq(position)
     end
 
-    let(:departure) do
-      { position: DateTime.now }
+    it 'update arrival time' do
+      patch :update_station, params: { id: station.to_param, arrival: time,
+                                       route_id: route.id },
+                             session: valid_session
+      station.reload
+      expect(station.time_in(route, :arrival)).to eq(DateTime.new(*time.values))
     end
 
-    it 'update railway_station arrival time' do
-      patch :update_station, params: { id: railway_station.to_param, arrival: arrival.to_param },
-                              session: valid_session
-      railway_station.reload
-      expect(railway_station.arrival).to eq(arrival)
+    it 'update departure time' do
+      patch :update_station, params: { id: station.to_param, departure: time,
+                                       route_id: route.id },
+                             session: valid_session
+      station.reload
+      expect(station.time_in(route, :departure)).to eq(DateTime.new(*time.values))
+    end
+
+    it 'redirects to the route' do
+      put :update_station, params: { id: station.to_param, route_id: route.id }, session: valid_session
+      expect(response).to redirect_to(route)
     end
   end
-
 end
