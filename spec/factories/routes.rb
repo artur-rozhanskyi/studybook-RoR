@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :route do
-    before(:create) { |r| 2.times { r.railway_stations << create(:railway_station) } }
+    before(:create) { |r| r.railway_stations << create_list(:railway_station, 2) }
 
     trait :with_train do
       before(:create) { |r| r.trains << create(:train) }

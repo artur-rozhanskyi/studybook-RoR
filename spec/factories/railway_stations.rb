@@ -3,7 +3,11 @@ FactoryBot.define do
     name { 'Station1' }
 
     trait :with_route do
-      after(:create) { |s| s.routes << create(:route) }
+      after(:create) do |s|
+        routes = create_list(:route, 1)
+        s.railway_stations_routes.find_by(route: routes.first).position = 1
+        s.routes << routes
+      end
     end
   end
 end

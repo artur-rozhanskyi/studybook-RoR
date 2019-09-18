@@ -1,6 +1,6 @@
 class Carriage < ApplicationRecord
   belongs_to :train
-  validates :number, uniqueness: { scope: :train_id }
+  validates :number, uniqueness: { scope: :train_id }, allow_nil: true
 
   before_create :set_number
 

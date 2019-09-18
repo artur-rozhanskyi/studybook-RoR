@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :ticket do
-    train
+    train { create(:train, :with_route) }
     name { Faker::Name.unique.name }
     middle_name { Faker::Name.unique.name }
     last_name { Faker::Name.unique.name }

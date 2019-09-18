@@ -36,11 +36,9 @@ class RailwayStationsController < ApplicationController
   end
 
   def update_station
-    @route = Route.find(params[:route_id])
-    @railway_station.update_position(@route, params[:position]) if params[:position]
-    @railway_station.update_time(@route, params[:arrival], :arrival) if params[:arrival]
-    @railway_station.update_time(@route, params[:departure], :departure) if params[:departure]
-    redirect_to @route
+    @railway_station = UpdateRailwayStationService.update_station(@railway_station, params)
+    binding.pry
+    redirect_to Route.find(params[:route_id])
   end
 
   private
