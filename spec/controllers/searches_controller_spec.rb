@@ -13,13 +13,21 @@ RSpec.describe SearchesController, type: :controller do
   end
 
   context 'when request with parameters' do
-    let(:route) { create(:route, :with_train) }
+    let(:route) { create(:route, :with_train, :search) }
     let(:starting) { route.railway_stations.first }
     let(:destination) { route.railway_stations.last }
 
-    it 'returns a success response' do
+    before do
+      route
       get :show, params: { starting: starting, destination: destination }, session: valid_session
+    end
+
+    it 'returns a success response' do
       expect(response).to be_successful
+    end
+
+    it 'returns hash with route id keys' do
+      expect(assigns(:data).keys.include?(route.id)).to be true
     end
   end
 end

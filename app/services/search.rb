@@ -32,11 +32,12 @@ class Search
                      arrival: train_time(route, params[:destination], :arrival),
                      starting: params[:starting],
                      destination: params[:destination] }
+      hsh
     end
 
     def result_data(params)
       @results = result params
-      @results.map(&:route_id).uniq.each_with_object(Hash.new { |h, k| h[k] = {} }) do |route, hsh|
+      @results.map(&:route_id).uniq.each.with_object(Hash.new { |h, k| h[k] = {} }) do |route, hsh|
         route_data(route, hsh, params)
       end
     end
