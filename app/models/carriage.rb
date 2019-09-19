@@ -4,7 +4,7 @@ class Carriage < ApplicationRecord
 
   before_create :set_number
 
-  default_scope { order(:train, :number) }
+  default_scope { order(:train) }
 
   protected
 
