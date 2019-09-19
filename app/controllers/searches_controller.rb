@@ -1,6 +1,6 @@
 class SearchesController < ApplicationController
   def show
-    @data = SearchService.find_routes(params)
+    @data = Search.call(params)
   end
 
   private

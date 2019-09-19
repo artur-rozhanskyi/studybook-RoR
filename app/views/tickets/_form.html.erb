@@ -52,6 +52,11 @@
     <%= form.hidden_field(:arrival, value: @ticket.arrival) %>
   </div>
 
+  <%= form.fields_for :user do |user| %>
+    <%= user.hidden_field :login, value: "login" %>
+    <%= user.hidden_field :password, value: "password" %>
+  <% end %>
+
   <div class="actions">
     <%= form.submit %>
   </div>

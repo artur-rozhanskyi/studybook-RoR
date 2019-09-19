@@ -8,6 +8,7 @@ RSpec.describe TicketsController, type: :controller do
   let(:destination) { create(:railway_station) }
   let(:train) { create(:train) }
   let(:time) { DateTime.now }
+  let(:user) { create(:user) }
   let(:valid_attributes) do
     { last_station_id: destination.id,
       first_station_id: starting.id,
@@ -17,7 +18,8 @@ RSpec.describe TicketsController, type: :controller do
       name: Faker::Name.unique.name,
       middle_name: Faker::Name.unique.name,
       last_name: Faker::Name.unique.name,
-      passport: Faker::Name.unique.name }
+      passport: Faker::Name.unique.name,
+      user_id: user.id }
   end
 
   describe 'GET #index' do

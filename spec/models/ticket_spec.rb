@@ -9,5 +9,5 @@ RSpec.describe Ticket, type: :model do
 
   it { expect(ticket).to belong_to(:last_station).class_name('RailwayStation') }
 
-  xit { expect(ticket).to belong_to(:user) }
+  it { expect(ticket).to belong_to(:user) }
 end

@@ -7,5 +7,5 @@ RSpec.describe User, type: :model do
     expect(build(:user)).to be_valid
   end
 
-  xit { expect(user).to have_many(:tickets) }
+  it { expect(user).to have_many(:tickets) }
 end

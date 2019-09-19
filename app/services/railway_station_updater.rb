@@ -1,9 +1,8 @@
 class RailwayStationUpdater
   class << self
-    def call(railway_station_id, params)
-      station = RailwayStation.find railway_station_id
-      update_station(station, params)
-      station
+    def call(railway_station, params)
+      update_station(railway_station, params)
+      railway_station
     end
 
     private

@@ -7,6 +7,7 @@ FactoryBot.define do
     passport { Faker::Name.unique.name }
     arrival { DateTime.now }
     departure { DateTime.now }
+    user
 
     before(:create) do |t|
       t.first_station = t.train.routes.first.railway_stations.first
