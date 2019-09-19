@@ -1,4 +1,4 @@
-<% present(@carriage) do |carriage| %>
+<% present(@carriage.becomes(Carriage)) do |carriage| %>
   <%= link_to 'Edit', edit_carriage_path(carriage) %> |
   <%= link_to 'Back', carriage.train %>
 
