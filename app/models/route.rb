@@ -11,6 +11,14 @@ class Route < ApplicationRecord
   private
 
   def set_name
-    self[:name] = "#{railway_stations.first.name} - #{railway_stations.last.name}"
+    self[:name] = "#{first_station.name} - #{last_station.name}"
+  end
+
+  def first_station
+    railway_stations.first
+  end
+
+  def last_station
+    railway_stations.last
   end
 end

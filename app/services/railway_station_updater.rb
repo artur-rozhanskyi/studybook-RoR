@@ -1,4 +1,4 @@
-class UpdateRailwayStation
+class RailwayStationUpdater
   class << self
     def call(railway_station_id, params)
       station = RailwayStation.find railway_station_id

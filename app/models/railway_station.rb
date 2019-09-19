@@ -33,6 +33,6 @@ class RailwayStation < ApplicationRecord
 
   def time_set(hash)
     date = [hash[:year], hash[:month], hash[:day], hash[:hour], hash[:minute]]
-    DateTime.strptime(date.join('/'), '%Y/%m/%d/%H/%M')
+    DateTime.new(*date.map(&:to_i))
   end
 end

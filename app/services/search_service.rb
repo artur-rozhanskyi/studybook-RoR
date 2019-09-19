@@ -1,6 +1,6 @@
 module SearchService
   class << self
-    def find(params)
+    def find_routes(params)
       Search.call params
     end
   end

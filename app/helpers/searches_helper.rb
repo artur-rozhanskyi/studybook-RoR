@@ -1,6 +1,6 @@
 module SearchesHelper
   def station_list
-    @list = RailwayStation.all.collect { |x| [x.name, x.id] }
+    RailwayStation.pluck(:name, :id)
   end
 
   def route_name(id)

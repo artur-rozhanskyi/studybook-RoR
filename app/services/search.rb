@@ -1,7 +1,7 @@
 class Search
   class << self
     def call(params)
-      return unless params[:starting] && params[:destination]
+      return {} unless params[:starting] && params[:destination]
 
       result_data params
     end
@@ -37,7 +37,7 @@ class Search
 
     def result_data(params)
       @results = result params
-      @results.map(&:route_id).uniq.each.with_object(Hash.new { |h, k| h[k] = {} }) do |route, hsh|
+      @results.pluck(:route_id).uniq.each.with_object(Hash.new { |h, k| h[k] = {} }) do |route, hsh|
         route_data(route, hsh, params)
       end
     end
