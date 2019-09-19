@@ -8,7 +8,7 @@ FactoryBot.define do
     end
 
     trait :with_route do
-      before(:create) { |train| train.routes { create_list(:route, 1) } }
+      before(:create) { |train| train.routes = create_list(:route, 1) }
     end
   end
 end

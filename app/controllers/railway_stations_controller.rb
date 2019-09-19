@@ -36,9 +36,8 @@ class RailwayStationsController < ApplicationController
   end
 
   def update_station
-    @railway_station = UpdateRailwayStationService.update_station(@railway_station, params)
-    binding.pry
-    redirect_to Route.find(params[:route_id])
+    UpdateRailwayStationService.update_station(@railway_station, params)
+    redirect_to Route.find params[:route_id]
   end
 
   private

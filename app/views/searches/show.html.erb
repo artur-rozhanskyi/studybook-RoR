@@ -34,11 +34,11 @@
               <td><%= data[:arrival] %></td>
               <td>
                 <%= button_to "Buy", new_ticket_path, method: :get,
-                              params:{ starting: data[:starting],
-                                       destination: data[:destination],
-                                       arrival: data[:arrival],
-                                       departure: data[:departure],
-                                       train_id: train.id } %>
+                              params:{ ticket: {first_station_id: data[:starting],
+                                                last_station_id: data[:destination],
+                                                arrival: data[:arrival],
+                                                departure: data[:departure],
+                                                train_id: train.id } } %>
               </td>
             </tr>
           <% end %>

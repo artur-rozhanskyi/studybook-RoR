@@ -37,26 +37,26 @@
         <tbody>
         <% @route.railway_stations.each do |railway_station| %>
           <%= render 'common/error', resource: railway_station %>
-                <tr>
-                  <td><%= railway_station.name %></td>
-                  <td>
-                    <%= form_tag update_station_railway_station_path(railway_station), method: :patch do %>
-                      <%= number_field_tag :position, railway_station.position_in(@route) %>
-                    <td>
-                      <%= select_time(railway_station.time_in(@route, :arrival),
-                                      { :prefix => "arrival" }, style: "width: auto;") %>
-                    </td>
-                    <td>
-                      <%= select_time(railway_station.time_in(@route, :departure),
-                                      { :prefix => "departure" }, style: "width: auto;") %>
-                    </td>
-                    <%= hidden_field_tag :route_id, @route.id %>
-                    <td>
-                      <%= submit_tag "Update" %>
-                    </td>
-                    <% end %>
-                  </td>
-                </tr>
+            <tr>
+              <td><%= railway_station.name %></td>
+              <td>
+                <%= form_tag update_station_railway_station_path(railway_station), method: :patch do %>
+                  <%= number_field_tag :position, railway_station.position_in(@route) %>
+                <td>
+                  <%= select_time(railway_station.time_in(@route, :arrival),
+                                  { :prefix => "arrival" }, style: "width: auto;") %>
+                </td>
+                <td>
+                  <%= select_time(railway_station.time_in(@route, :departure),
+                                  { :prefix => "departure" }, style: "width: auto;") %>
+                </td>
+                <%= hidden_field_tag :route_id, @route.id %>
+                <td>
+                  <%= submit_tag "Update" %>
+                </td>
+                <% end %>
+              </td>
+            </tr>
         <% end %>
         </tbody>
       </table>

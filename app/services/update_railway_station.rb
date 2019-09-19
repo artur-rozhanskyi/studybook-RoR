@@ -10,8 +10,7 @@ class UpdateRailwayStation
 
     def update_station(station, params)
       [:position, :arrival, :departure].each do |item|
-        binding.pry
-        station.update_field(params[:route_id], item, params[item])
+        station.update_field(params[:route_id], item, params[item]) if params[item]
       end
     end
   end

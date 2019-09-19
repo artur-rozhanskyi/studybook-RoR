@@ -8,16 +8,16 @@ class TicketsController < ApplicationController
   def show; end
 
   def new
-    @ticket = Ticket.new(last_station_id: params[:destination],
-                         first_station_id: params[:starting],
-                         train_id: params[:train_id],
-                         arrival: params[:arrival],
-                         departure: params[:departure])
+    @ticket = Ticket.new(ticket_params)
   end
 
   def create
     @ticket = Ticket.new(ticket_params)
-    redirect_to @ticket if @ticket.save
+    if @ticket.save
+      redirect_to @ticket
+    else
+      render :new
+    end
   end
 
   private
