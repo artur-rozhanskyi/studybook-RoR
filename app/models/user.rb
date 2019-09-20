@@ -1,3 +1,3 @@
 class User < ApplicationRecord
-  has_many :tickets, dependent: :nullify, inverse_of: :user
+  has_many :tickets, dependent: :nullify
 end

@@ -1,18 +1,22 @@
 class Carriage < ApplicationRecord
   belongs_to :train
-  validates :number, uniqueness: { scope: :train_id }
-   
-  before_validation :set_number
+  validates :number, uniqueness: { scope: :train_id }, allow_nil: true
 
-  default_scope { order(:train, :number) }
+  before_create :set_number
+
+  default_scope { order(:train) }
 
   protected
 
   def set_number
-    write_attribute(:number, carriage_number )
+    self[:number] = new_carriage_number
   end
 
-  def carriage_number    
-    train.carriages.present? ? train.carriages.map(&:number).max + 1 : 1
+  def new_carriage_number
+    carriage_numbers.size.zero? ? 1 : carriage_numbers.max + 1
+  end
+
+  def carriage_numbers
+    train.carriages.pluck(:number).compact
   end
 end

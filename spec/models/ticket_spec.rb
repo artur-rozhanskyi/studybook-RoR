@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Ticket, type: :model do
-  let(:ticket) { create(:ticket, :with_path) }
+  let(:ticket) { create(:ticket) }
 
   it { expect(ticket).to belong_to(:train) }
 
