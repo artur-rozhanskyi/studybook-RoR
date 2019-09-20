@@ -1,6 +1,5 @@
-<%= form_with(model: carriage.becomes(Carriage), local: true, class: 'form-horizontal') do |form| %>
+<%= form_for(@carriage.becomes(Carriage), local: true, class: 'form-horizontal') do |form| %>
   <%= render 'common/error', resource: @carriage %>
-
   <div>
    <%= form.label :type %>
    <% select_list = {
