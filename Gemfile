@@ -41,7 +41,9 @@ gem 'jquery-rails'
 
 group :development, :test do
   gem 'factory_bot_rails'
+  gem 'faker'
   gem 'pry-rails'
+  gem 'rails-controller-testing'
   gem 'rspec-rails'
   gem 'rubocop-rails'
   gem 'rubocop-rspec'
@@ -67,5 +69,6 @@ group :test do
   gem 'shoulda-matchers'
 end
 
+gem 'rails-erd', group: :development
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
