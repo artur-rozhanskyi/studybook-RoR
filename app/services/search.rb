@@ -8,17 +8,8 @@ class Search
 
     private
 
-    def result(params)
-      queries = []
-      query = RailwayStationsRoute.joins('JOIN railway_stations_routes as t
-                                        on t.route_id = railway_stations_routes.route_id')
-                                  .where('t.railway_station_id' => params[:starting],
-                                         'railway_stations_routes.railway_station_id' => params[:destination])
-                                  .where('railway_stations_routes.position > t.position')
-      queries << query.select('railway_stations_routes.*')
-      queries << query.select('t.*')
-      sql_str = queries.map(&:to_sql).join(' UNION ')
-      RailwayStationsRoute.find_by_sql(sql_str)
+    def filtred_railway_station_route(params)
+      FindRailwayStationRoutes.call params
     end
 
     def train_time(route, station, method)
@@ -36,7 +27,7 @@ class Search
     end
 
     def result_data(params)
-      @results = result params
+      @results = filtred_railway_station_route params
       @results.pluck(:route_id).uniq.each.with_object(Hash.new { |h, k| h[k] = {} }) do |route, hsh|
         route_data(route, hsh, params)
       end
