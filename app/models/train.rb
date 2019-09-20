@@ -17,6 +17,6 @@ class Train < ApplicationRecord
   end
 
   def carriages_tail
-    carriages.order(number: :desc)
+    carriages.order('number DESC')
   end
 end

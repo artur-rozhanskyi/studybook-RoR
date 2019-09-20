@@ -1,6 +1,6 @@
-<% present(@carriage.becomes(Carriage)) do |carriage| %>
-  <%= link_to 'Edit', edit_carriage_path(carriage) %> |
-  <%= link_to 'Back', carriage.train %>
+<% present(@carriage) do |carriage| %>
+  <%= link_to 'Edit', edit_carriage_path(@carriage) %> |
+  <%= link_to 'Back', carriages_path %>
 
   <p id="notice"><%= notice %></p>
 
