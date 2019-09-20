@@ -1,6 +1,5 @@
 class TicketsController < ApplicationController
   before_action :set_ticket, only: [:show]
-  before_action :set_user, only: [:create]
 
   def index
     @tickets = Ticket.all
@@ -9,12 +8,12 @@ class TicketsController < ApplicationController
   def show; end
 
   def new
-    @ticket = Ticket.new(ticket_params)
+    @ticket = Ticket.new(ticket_params.merge(user: User.new))
   end
 
   def create
-    @ticket = Ticket.new(ticket_params)
-    @ticket.user = @user
+    user = User.find_or_initialize_by(ticket_params[:user_attributes])
+    @ticket = Ticket.new(ticket_params.except(:user_attributes).merge(user: user))
     if @ticket.save
       redirect_to @ticket
     else
@@ -28,16 +27,25 @@ class TicketsController < ApplicationController
     @ticket = Ticket.find(params[:id])
   end
 
-  def set_user
-    @user = User.find_or_create_by user_params
-  end
-
-  def user_params
-    params.require(:ticket).permit(user: [:login, :password])[:user]
-  end
-
+  # rubocop:disable Metrics/MethodLength
   def ticket_params
-    params.require(:ticket).permit(:name, :middle_name, :last_name, :passport, :train_id, :first_station_id,
-                                   :last_station_id, :user_id, :arrival, :departure)
+    params
+      .require(:ticket)
+      .permit(
+        :name,
+        :middle_name,
+        :last_name,
+        :passport,
+        :train_id,
+        :first_station_id,
+        :last_station_id,
+        :arrival,
+        :departure,
+        user_attributes: [
+          :login,
+          :password
+        ]
+      )
   end
+  # rubocop:enable Metrics/MethodLength:
 end

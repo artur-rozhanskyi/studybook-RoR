@@ -8,7 +8,7 @@ class Search
 
     private
 
-    def filtred_railway_station_route(params)
+    def filtered_railway_station_route(params)
       FindRailwayStationRoutes.call params
     end
 
@@ -27,7 +27,7 @@ class Search
     end
 
     def result_data(params)
-      @results = filtred_railway_station_route params
+      @results = filtered_railway_station_route params
       @results.pluck(:route_id).uniq.each.with_object(Hash.new { |h, k| h[k] = {} }) do |route, hsh|
         route_data(route, hsh, params)
       end
