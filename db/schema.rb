@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_16_141047) do
+ActiveRecord::Schema.define(version: 2019_09_20_150402) do
 
   create_table "carriages", force: :cascade do |t|
     t.integer "bottom_places"
@@ -80,6 +80,17 @@ ActiveRecord::Schema.define(version: 2019_09_16_141047) do
   create_table "users", force: :cascade do |t|
     t.string "login"
     t.string "password"
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.string "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string "unconfirmed_email"
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
 end
