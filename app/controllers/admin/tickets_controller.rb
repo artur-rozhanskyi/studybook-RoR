@@ -1,6 +1,6 @@
 module Admin
   class TicketsController < BaseController
-    before_action :set_ticket, only: [:show, :edit]
+    before_action :set_ticket, only: [:show, :edit, :destroy]
 
     def index
       @tickets = Ticket.all

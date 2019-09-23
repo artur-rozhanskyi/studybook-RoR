@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_23_123033) do
+ActiveRecord::Schema.define(version: 2019_09_23_144521) do
 
   create_table "carriages", force: :cascade do |t|
     t.integer "bottom_places"

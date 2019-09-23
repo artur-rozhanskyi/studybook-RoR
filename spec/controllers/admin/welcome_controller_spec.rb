@@ -1,6 +1,8 @@
 require 'rails_helper'
 
-RSpec.describe WelcomeController, type: :controller do
+RSpec.describe Admin::WelcomeController, type: :controller do
+  before { log_in(create(:user, :admin)) }
+
   describe 'GET #index' do
     it 'returns http success' do
       get :index

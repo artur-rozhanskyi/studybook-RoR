@@ -12,8 +12,7 @@
   <body>
     <div class="container">
       <%= render 'common/header' %>
-      <p id="notice" class="notice"><%= notice %></p>
-      <p id="alert" class="alert"><%= alert %></p>
+      <%= render 'common/alert_notice' %>
       <%= yield %>
       <%= render 'common/footer' %>
     </div>

@@ -10,11 +10,11 @@
   </head>
 
   <body>
-  <div class="container">
-    <%= render 'common/admin_header' %>
-    <p class="alert"><%= alert %></p>
-    <%= yield %>
-    <%= render 'common/footer' %>
-  </div>
+    <div class="container">
+      <%= render 'common/admin_header' %>
+      <%= render 'common/alert_notice' %>
+      <%= yield %>
+      <%= render 'common/footer' %>
+    </div>
   </body>
 </html>

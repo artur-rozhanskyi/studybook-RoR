@@ -22,7 +22,10 @@ class TicketsController < ApplicationController
   end
 
   def destroy
-    @ticket.destroy
+    current_user.tickets.find(params[:id]).destroy
+  rescue ActiveRecord::RecordNotFound
+    flash[:alert] = 'You do not have permission'
+  ensure
     redirect_to tickets_path
   end
 

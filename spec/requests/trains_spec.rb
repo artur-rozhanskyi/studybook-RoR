@@ -6,7 +6,7 @@ RSpec.describe 'Trains', type: :request do
   describe 'GET /admin/trains' do
     before { login_as admin }
 
-    it 'works! (now write some real specs)' do
+    it 'returns :ok status by admin login' do
       get admin_trains_path
       expect(response).to have_http_status(:ok)
     end

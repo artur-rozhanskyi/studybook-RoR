@@ -27,7 +27,8 @@ RSpec.describe Admin::TrainsController, type: :controller do
   # This should return the minimal set of attributes required to create a valid
   # Train. As you add validations to Train, be sure to
   # adjust the attributes here as well.
-  login_admin
+  before { log_in(create(:user, :admin)) }
+
   let(:valid_attributes) do
     { number: '12345', current_station_id: create(:railway_station).id, routes: [create(:route)] }
   end

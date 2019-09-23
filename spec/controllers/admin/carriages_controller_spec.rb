@@ -1,7 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe Admin::CarriagesController, type: :controller do
-  login_admin
+  before { log_in(create(:user, :admin)) }
+
   let(:valid_attributes) do
     { bottom_places: 26, upper_places: 26, train_id: create(:train).id }
   end
