@@ -23,7 +23,7 @@ require 'rails_helper'
 # removed from Rails core in Rails 5, but can be added back in via the
 # `rails-controller-testing` gem.
 
-RSpec.describe RailwayStationsController, type: :controller do
+RSpec.describe Admin::RailwayStationsController, type: :controller do
   # This should return the minimal set of attributes required to create a valid
   # RailwayStation. As you add validations to RailwayStation, be sure to
   # adjust the attributes here as well.
@@ -80,7 +80,7 @@ RSpec.describe RailwayStationsController, type: :controller do
 
       it 'redirects to the created railway_station' do
         post :create, params: { railway_station: valid_attributes }, session: valid_session
-        expect(response).to redirect_to(RailwayStation.last)
+        expect(response).to redirect_to(admin_railway_station_path(RailwayStation.last))
       end
     end
 
@@ -106,7 +106,7 @@ RSpec.describe RailwayStationsController, type: :controller do
 
       it 'redirects to the railway_station' do
         put :update, params: { id: railway_station.to_param, railway_station: valid_attributes }, session: valid_session
-        expect(response).to redirect_to(railway_station)
+        expect(response).to redirect_to(admin_railway_station_path(railway_station))
       end
     end
 
@@ -130,7 +130,7 @@ RSpec.describe RailwayStationsController, type: :controller do
 
     it 'redirects to the railway_stations list' do
       delete :destroy, params: { id: railway_station.to_param }, session: valid_session
-      expect(response).to redirect_to(railway_stations_url)
+      expect(response).to redirect_to(admin_railway_stations_url)
     end
   end
 
@@ -170,7 +170,7 @@ RSpec.describe RailwayStationsController, type: :controller do
 
     it 'redirects to the route' do
       put :update_station, params: { id: station.to_param, route_id: route.id }, session: valid_session
-      expect(response).to redirect_to(route)
+      expect(response).to redirect_to(admin_route_path(route))
     end
   end
 end

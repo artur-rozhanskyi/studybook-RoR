@@ -1,6 +1,8 @@
 <% present(@carriage.becomes(Carriage)) do |carriage| %>
-  <%= link_to 'Edit', edit_carriage_path(carriage) %> |
-  <%= link_to 'Back', carriage.train %>
+  <%= link_to 'Edit', edit_admin_carriage_path(carriage) %> |
+  <%= link_to 'Destroy', { :controller => 'carriages', :action => 'destroy', :id => @carriage },
+              { :confirm => 'Are you sure?', :method => :delete, :remote => true}%> |
+  <%= link_to 'Back', admin_train_path(carriage.train) %>
 
   <p id="notice"><%= notice %></p>
 

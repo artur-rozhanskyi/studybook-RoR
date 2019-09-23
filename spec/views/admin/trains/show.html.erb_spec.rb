@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'trains/show', type: :view do
+RSpec.describe 'admin/trains/show', type: :view do
   before do
     @train = assign(:train, create(:train))
   end

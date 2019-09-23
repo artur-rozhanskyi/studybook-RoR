@@ -1,8 +1,8 @@
 require 'rails_helper'
 
-RSpec.describe 'trains/index', type: :view do
+RSpec.describe 'admin/trains/index', type: :view do
   before do
-    assign(:trains, [create(:train), create(:train)])
+    assign(:trains, create_list(:train, 2))
   end
 
   it 'renders a list of trains' do

@@ -1,6 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe TicketsController, type: :controller do
+  let(:user) { create(:user) }
+
   let(:valid_session) { {} }
   let(:ticket) { create(:ticket) }
 
@@ -8,7 +10,6 @@ RSpec.describe TicketsController, type: :controller do
   let(:destination) { create(:railway_station) }
   let(:train) { create(:train) }
   let(:time) { DateTime.now }
-  let(:user) { create(:user) }
   let(:valid_attributes) do
     { last_station_id: destination.id,
       first_station_id: starting.id,

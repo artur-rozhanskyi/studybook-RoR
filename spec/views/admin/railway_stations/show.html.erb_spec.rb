@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'railway_stations/show', type: :view do
+RSpec.describe 'admin/railway_stations/show', type: :view do
   before do
     @railway_station = assign(:railway_station, create(:railway_station))
   end

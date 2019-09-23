@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe RoutesController, type: :controller do
+RSpec.describe Admin::RoutesController, type: :controller do
   let(:valid_attributes) do
     { railway_station_ids: [create(:railway_station).id, create(:railway_station).id] }
   end
@@ -51,7 +51,7 @@ RSpec.describe RoutesController, type: :controller do
 
       it 'redirects to the created route' do
         post :create, params: { route: valid_attributes }, session: valid_session
-        expect(response).to redirect_to(Route.last)
+        expect(response).to redirect_to(admin_route_path(Route.last))
       end
     end
 
@@ -79,7 +79,7 @@ RSpec.describe RoutesController, type: :controller do
 
       it 'redirects to the route' do
         put :update, params: { id: route.to_param, route: valid_attributes }, session: valid_session
-        expect(response).to redirect_to(route)
+        expect(response).to redirect_to(admin_route_path(route))
       end
     end
 
@@ -104,7 +104,7 @@ RSpec.describe RoutesController, type: :controller do
 
     it 'redirects to the routes list' do
       delete :destroy, params: { id: route.to_param }, session: valid_session
-      expect(response).to redirect_to(routes_url)
+      expect(response).to redirect_to(admin_routes_url)
     end
   end
 end

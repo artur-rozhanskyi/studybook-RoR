@@ -1,14 +1,14 @@
-<%= form_with(model: train, local: true, class: 'form-horizontal') do |form| %>
-  <%= render 'common/error', resource: train %>
+<%= form_for([:admin, @train], class: 'form-horizontal') do |form| %>
+  <%= render 'common/error', resource: @train %>
   <div class="field">
     <%= form.label :number %>
     <%= form.text_field :number, class: 'col-sm-10' %>
   </div>
 
   <div class="field">
-      <%= form.label :route %>
+      <%= form.label :routes %>
     <div class="checkbox-list">
-      <%= form.collection_select :route, Route.all, :id, :name %>
+      <%= form.collection_select :routes, Route.all, :id, :name %>
     </div>
   </div>
 

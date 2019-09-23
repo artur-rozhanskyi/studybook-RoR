@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe CarriagesController, type: :controller do
+RSpec.describe Admin::CarriagesController, type: :controller do
   let(:valid_attributes) do
     { bottom_places: 26, upper_places: 26, train_id: create(:train).id }
   end
@@ -53,7 +53,7 @@ RSpec.describe CarriagesController, type: :controller do
 
       it 'redirects to the created carriage' do
         post :create, params: { carriage: valid_attributes, train_id: carriage.train_id }, session: valid_session
-        expect(response).to redirect_to(carriage.train)
+        expect(response).to redirect_to(admin_train_path(carriage.train))
       end
     end
 
@@ -81,7 +81,7 @@ RSpec.describe CarriagesController, type: :controller do
       it 'redirects to the carriage' do
         put :update, params: { id: carriage.to_param, carriage: valid_attributes, train_id: carriage.train_id },
                      session: valid_session
-        expect(response).to redirect_to(carriage.becomes(Carriage))
+        expect(response).to redirect_to(admin_carriage_path(carriage.becomes(Carriage)))
       end
     end
 
@@ -106,7 +106,7 @@ RSpec.describe CarriagesController, type: :controller do
 
     it 'redirects to the carriages list' do
       delete :destroy, params: { id: carriage.to_param }, session: valid_session
-      expect(response).to redirect_to(carriage.train)
+      expect(response).to redirect_to(admin_train_path(carriage.train))
     end
   end
 end

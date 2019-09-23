@@ -2,7 +2,7 @@
 
 <h1>Railway Stations</h1>
 
-<%= link_to 'New Railway Station', new_railway_station_path %>
+<%= link_to 'New Railway Station', new_admin_railway_station_path %>
 
 <table class="table table-striped">
   <thead>
@@ -12,7 +12,7 @@
   </thead>
 
   <tbody>
-    <%= render @railway_stations %>
+    <%= render partial: 'railway_station', collection: @railway_stations %>
   </tbody>
 </table>
 

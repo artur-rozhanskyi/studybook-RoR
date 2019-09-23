@@ -1,5 +1,5 @@
-<%= link_to 'Edit', edit_route_path(@route) %> |
-<%= link_to 'Back', routes_path %>
+<%= link_to 'Edit', edit_admin_route_path(@route) %> |
+<%= link_to 'Back', admin_routes_path %>
 
 <p id="notice"><%= notice %></p>
 
@@ -40,7 +40,7 @@
             <tr>
               <td><%= railway_station.name %></td>
               <td>
-                <%= form_tag update_station_railway_station_path(railway_station), method: :patch do %>
+                <%= form_tag update_station_admin_railway_station_path(railway_station), method: :patch do %>
                   <%= number_field_tag :position, railway_station.position_in(@route) %>
                 <td>
                   <%= select_time(railway_station.time_in(@route, :arrival),

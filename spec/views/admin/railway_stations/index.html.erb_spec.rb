@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'railway_stations/index', type: :view do
+RSpec.describe 'admin/railway_stations/index', type: :view do
   let(:valid_attributes) do
     { name: 'Station' }
   end

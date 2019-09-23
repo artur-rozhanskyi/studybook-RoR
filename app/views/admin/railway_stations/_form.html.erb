@@ -1,5 +1,5 @@
-<%= form_with(model: railway_station, local: true, class: 'form-horizontal') do |form| %>
-  <%= render 'common/error', resource: railway_station %>
+<%= form_for([:admin, @railway_station], class: 'form-horizontal') do |form| %>
+  <%= render 'common/error', resource: @railway_station %>
 
   <div class="field">
     <%= form.label :name %>

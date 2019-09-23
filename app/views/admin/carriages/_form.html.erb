@@ -1,4 +1,5 @@
-<%= form_for(@carriage.becomes(Carriage), local: true, class: 'form-horizontal') do |form| %>
+<%= form_for([:admin, @train, @carriage.becomes(Carriage)],
+             class: 'form-horizontal') do |form| %>
   <%= render 'common/error', resource: @carriage %>
   <div>
    <%= form.label :type %>

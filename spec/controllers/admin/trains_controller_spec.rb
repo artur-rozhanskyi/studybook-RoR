@@ -23,7 +23,7 @@ require 'rails_helper'
 # removed from Rails core in Rails 5, but can be added back in via the
 # `rails-controller-testing` gem.
 
-RSpec.describe TrainsController, type: :controller do
+RSpec.describe Admin::TrainsController, type: :controller do
   # This should return the minimal set of attributes required to create a valid
   # Train. As you add validations to Train, be sure to
   # adjust the attributes here as well.
@@ -81,7 +81,7 @@ RSpec.describe TrainsController, type: :controller do
 
       it 'redirects to the created train' do
         post :create, params: { train: valid_attributes }, session: valid_session
-        expect(response).to redirect_to(Train.last)
+        expect(response).to redirect_to(admin_train_path(Train.last))
       end
     end
 
@@ -107,7 +107,7 @@ RSpec.describe TrainsController, type: :controller do
 
       it 'redirects to the train' do
         put :update, params: { id: train.to_param, train: valid_attributes }, session: valid_session
-        expect(response).to redirect_to(train)
+        expect(response).to redirect_to(admin_train_path(train))
       end
     end
 
@@ -130,7 +130,7 @@ RSpec.describe TrainsController, type: :controller do
 
     it 'redirects to the trains list' do
       delete :destroy, params: { id: train.to_param }, session: valid_session
-      expect(response).to redirect_to(trains_url)
+      expect(response).to redirect_to(admin_trains_url)
     end
   end
 end

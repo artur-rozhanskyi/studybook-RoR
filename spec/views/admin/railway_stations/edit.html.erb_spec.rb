@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'railway_stations/edit', type: :view do
+RSpec.describe 'admin/railway_stations/edit', type: :view do
   let(:valid_attributes) do
     { name: 'Station' }
   end
@@ -12,7 +12,7 @@ RSpec.describe 'railway_stations/edit', type: :view do
   it 'renders the edit railway_station form' do
     render
 
-    assert_select 'form[action=?][method=?]', railway_station_path(railway_station), 'post' do
+    assert_select 'form[action=?][method=?]', admin_railway_station_path(railway_station), 'post' do
     end
   end
 end
