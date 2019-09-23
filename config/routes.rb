@@ -9,6 +9,7 @@ Rails.application.routes.draw do
       patch :update_station, on: :member
     end
     resources :routes
+    resources :tickets
   end
 
   resource :search, only: [:show]

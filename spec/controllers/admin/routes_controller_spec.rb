@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Admin::RoutesController, type: :controller do
+  login_admin
   let(:valid_attributes) do
     { railway_station_ids: [create(:railway_station).id, create(:railway_station).id] }
   end

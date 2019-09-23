@@ -27,6 +27,7 @@ RSpec.describe Admin::RailwayStationsController, type: :controller do
   # This should return the minimal set of attributes required to create a valid
   # RailwayStation. As you add validations to RailwayStation, be sure to
   # adjust the attributes here as well.
+  login_admin
   let(:valid_attributes) do
     { name: 'Station' }
   end

@@ -1,24 +1,29 @@
 class TicketsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_ticket, only: [:show]
 
   def index
-    @tickets = Ticket.all
+    @tickets = current_user.tickets
   end
 
   def show; end
 
   def new
-    @ticket = Ticket.new(ticket_params.merge(user: User.new))
+    @ticket = Ticket.new(ticket_params)
   end
 
   def create
-    user = User.find_or_initialize_by(ticket_params[:user_attributes])
-    @ticket = Ticket.new(ticket_params.except(:user_attributes).merge(user: user))
+    @ticket = current_user.tickets.new(ticket_params)
     if @ticket.save
       redirect_to @ticket
     else
       render :new
     end
+  end
+
+  def destroy
+    @ticket.destroy
+    redirect_to tickets_path
   end
 
   private
@@ -40,11 +45,7 @@ class TicketsController < ApplicationController
         :first_station_id,
         :last_station_id,
         :arrival,
-        :departure,
-        user_attributes: [
-          :login,
-          :password
-        ]
+        :departure
       )
   end
   # rubocop:enable Metrics/MethodLength:

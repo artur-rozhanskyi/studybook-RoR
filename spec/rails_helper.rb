@@ -1,5 +1,6 @@
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 require 'spec_helper'
+require_relative 'support/controller_macros'
 ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../config/environment', __dir__)
 # Prevent database truncation if the environment is production
@@ -37,8 +38,11 @@ RSpec.configure do |config|
     config.include ::Rails::Controller::Testing::TestProcess, type: type
     config.include ::Rails::Controller::Testing::TemplateAssertions, type: type
     config.include ::Rails::Controller::Testing::Integration, type: type
+
+    config.extend ControllerMacros, type: type
   end
   config.include Devise::Test::ControllerHelpers, type: :controller
+  config.include Warden::Test::Helpers
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
 
@@ -73,3 +77,4 @@ Shoulda::Matchers.configure do |config|
     with.library :rails
   end
 end
+Warden.test_mode!

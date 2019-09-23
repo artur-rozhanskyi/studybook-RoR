@@ -1,7 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe TicketsController, type: :controller do
-  let(:user) { create(:user) }
+  login_user
+  let(:user) do
+    create(:user)
+  end
 
   let(:valid_session) { {} }
   let(:ticket) { create(:ticket) }
