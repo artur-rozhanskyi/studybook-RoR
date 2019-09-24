@@ -135,4 +135,9 @@ RSpec.describe Admin::TrainsController, type: :controller do
       expect(response).to redirect_to(admin_trains_url)
     end
   end
+
+  it_behaves_like 'cancel_user_access' do
+    let(:params) { {} }
+    let(:session) { {} }
+  end
 end

@@ -9,4 +9,9 @@ RSpec.describe Admin::WelcomeController, type: :controller do
       expect(response).to have_http_status(:success)
     end
   end
+
+  it_behaves_like 'cancel_user_access' do
+    let(:params) { {} }
+    let(:session) { {} }
+  end
 end

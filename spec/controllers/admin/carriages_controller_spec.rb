@@ -111,4 +111,9 @@ RSpec.describe Admin::CarriagesController, type: :controller do
       expect(response).to redirect_to(admin_train_path(carriage.train))
     end
   end
+
+  it_behaves_like 'cancel_user_access' do
+    let(:params) { { train_id: carriage.train_id } }
+    let(:session) { {} }
+  end
 end

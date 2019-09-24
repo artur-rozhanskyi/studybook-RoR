@@ -175,4 +175,9 @@ RSpec.describe Admin::RailwayStationsController, type: :controller do
       expect(response).to redirect_to(admin_route_path(route))
     end
   end
+
+  it_behaves_like 'cancel_user_access' do
+    let(:params) { {} }
+    let(:session) { {} }
+  end
 end

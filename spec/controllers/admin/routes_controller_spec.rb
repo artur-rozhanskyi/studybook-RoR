@@ -109,4 +109,9 @@ RSpec.describe Admin::RoutesController, type: :controller do
       expect(response).to redirect_to(admin_routes_url)
     end
   end
+
+  it_behaves_like 'cancel_user_access' do
+    let(:params) { {} }
+    let(:session) { {} }
+  end
 end
