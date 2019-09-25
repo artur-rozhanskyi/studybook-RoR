@@ -1,23 +1,21 @@
-<h1>Search</h1>
-
-<h2>Новый поиск</h2>
+<h1><%= t('.title') %></h1>
 <%= form_tag search_path, method: :get do %>
-  <%= label_tag :starting %>
+  <%= label_tag :starting, t('.starting') %>
   <%= select_tag :starting, options_for_select(station_list) %>
-  <%= label_tag :destination %>
+  <%= label_tag :destination, t('.destination') %>
   <%= select_tag :destination, options_for_select(station_list) %>
-  <%= submit_tag "Search" %>
+  <%= submit_tag t('.submit') %>
 <% end %>
 
-<h2>Results</h2>
+<h2><%= t('.results') %></h2>
 <% if @data.present? %>
     <table class="table table-striped">
       <thead>
       <tr>
-        <th>Route</th>
-        <th>Train</th>
-        <th>Departure</th>
-        <th>Arrival</th>
+        <th><%= t('.table.title.route') %></th>
+        <th><%= t('.table.title.train') %></th>
+        <th><%= t('.table.title.departure') %></th>
+        <th><%= t('.table.title.arrival')%></th>
         <th></th>
       </tr>
       </thead>
@@ -32,7 +30,7 @@
               <td><%= data[:departure] %></td>
               <td><%= data[:arrival] %></td>
               <td>
-                <%= button_to "Buy", new_ticket_path, method: :get,
+                <%= button_to t('.table.buy'), new_ticket_path, method: :get,
                               params:{ ticket: {first_station_id: data[:starting],
                                                 last_station_id: data[:destination],
                                                 arrival: data[:arrival],

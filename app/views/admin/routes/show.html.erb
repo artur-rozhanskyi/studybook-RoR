@@ -1,37 +1,35 @@
-<%= link_to 'Edit', edit_admin_route_path(@route) %> |
-<%= link_to 'Back', admin_routes_path %>
-
-<p id="notice"><%= notice %></p>
+<%= link_to t('common.edit'), edit_admin_route_path(@route) %> |
+<%= link_to t('common.back'), admin_routes_path %>
 
 <p>
-  <strong>Name:</strong>
+  <strong><%= t('.name') %>:</strong>
   <%= @route.name %>
 </p>
 
 <p>
-  <strong>Trains:</strong>
+  <strong><%= t(".trains") %>:</strong>
   <ul>
     <% if @route.trains.present? %>
       <% @route.trains.each do |train| %>
         <li><%= train.number %></li>
       <% end %>
     <% else %>
-      There are no trains on the route
+      <%= t('.no_train') %>
     <% end %>
   </ul>
 </p>
 
 <p>
-  <strong>Stations:</strong>
+  <strong><%= t(".stations.names") %>:</strong>
   <% if @route.railway_stations.present? %>
     <div class="row">
       <table id="table-route-stations" class="table table-striped col-lg-6 col-md-6">
         <thead>
         <tr>
-          <th>Name</th>
-          <th>Position</th>
-          <th>Arrival</th>
-          <th>Departure</th>
+          <th><%= t(".stations.table.title.name") %></th>
+          <th><%= t(".stations.table.title.position") %></th>
+          <th><%= t(".stations.table.title.arrival") %></th>
+          <th><%= t(".stations.table.title.departure") %></th>
         </tr>
         </thead>
         <tbody>
@@ -52,7 +50,7 @@
                 </td>
                 <%= hidden_field_tag :route_id, @route.id %>
                 <td>
-                  <%= submit_tag "Update" %>
+                  <%= submit_tag  t(".submit") %>
                 </td>
                 <% end %>
               </td>
@@ -62,7 +60,7 @@
       </table>
     </div>
   <% else %>
-    <p>There are no station on the route</p>
+    <p><%= t(".no_station") %></p>
   <% end %>
 </p>
   

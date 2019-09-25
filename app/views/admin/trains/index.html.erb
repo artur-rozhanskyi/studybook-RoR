@@ -1,13 +1,11 @@
-<p id="notice"><%= notice %></p>
+<h1><%= t('.title') %></h1>
 
-<h1>Trains</h1>
-
-<%= link_to 'New Train', new_admin_train_path %>
+<%= link_to t('.new_train'), new_admin_train_path %>
 
 <table class="table table-striped">
   <thead>
     <tr>
-      <th>Number</th>
+      <th><%= t('.table.title.number') %></th>
       <th></th>
     </tr>
   </thead>

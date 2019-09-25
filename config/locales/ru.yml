@@ -1,0 +1,109 @@
+ru:
+  searches:
+    show:
+      title: "Поиск"
+      results: "Результаты"
+      starting: "Начальная станция"
+      destination: "Конечная станция"
+      submit: "Поиск"
+      table:
+        title:
+          route: "Маршрут"
+          train: "Поезд"
+          departure: "Отправление"
+          arrival: "Прибытие"
+        buy: "Купить"
+  common:
+    header:
+      search: "Поиск"
+      tickets: "Мои билеты"
+    log_in_log_out:
+      logout: "Выйти"
+      login: "Войти"
+    admin_header:
+      home: "Главная"
+      trains: "Поезда"
+      routes: "Маршруты"
+      railway_stations: "Станции"
+      tickets: "Билеты"
+    user_name:
+      hello: "Привет"
+    create: "Создать"
+    change: "Изменить"
+    show: "Показать"
+    edit: "Изменить"
+    destroy: "Удалить"
+    back: "Назад"
+    sure: "Вы уверенны?"
+    errors: "При заполнении формы возникли ошибки"
+  admin:
+    railway_stations:
+      form:
+        submit: "%{action} станцию"
+      index:
+        title: "Станции"
+        new_railway_station: "Новая станция"
+        table:
+          title:
+            name: "Название"
+      show:
+        name: "Название"
+      new:
+        title: "Новая станция"
+    routes:
+      form:
+        submit: "%{action} маршрут"
+      index:
+        new_route: "Новый маршрут"
+        table:
+          title:
+            name: "Название"
+        title: "Маршруты"
+      new:
+        title: "Новый маршрут"
+      show:
+        name: "Название"
+        trains: "Поезда"
+        no_train: "На маршруте нет поездов"
+        stations:
+          table:
+            title:
+              name: "Название"
+              position: "Позиция"
+              arrival: "Прибытие"
+              departure: "Отправление"
+          names: "Станции"
+        submit: "Обновить"
+        no_station: "Нет станций в маршруте"
+    trains:
+      form:
+        from_head: "С головы"
+        submit: "%{action} поезд"
+      edit:
+        titile: "Измениние поезда"
+      index:
+        title: "Поезда"
+        new_train: "Новый поезд"
+        table:
+          title:
+            number: "Номер"
+      new:
+        title: "Новый поезд"
+      show:
+        number: "Номер"
+        current_station:
+          name: "Текушая станция"
+          not_set: "Не установлена"
+        route:
+          name: "Маршрут"
+          not_set: "не установлен"
+        carriages:
+          name: "Вагоны"
+          type:
+            coupe: 'Купе'
+            economy: 'Плацкарт'
+            seating: 'Сидячих'
+            sleeper: 'СВ'
+          number_head: "Номера вагонов: ГОЛОВА"
+          number_tail: "ХВОСТ"
+          add: "Добавить вагон"

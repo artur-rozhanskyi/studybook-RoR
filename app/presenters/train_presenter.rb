@@ -1,7 +1,7 @@
 class TrainPresenter < BasePresenter
   def count_carraiage_types
     carriages.each_with_object(Hash.new(0)) do |carriage, hsh|
-      hsh[carriage.type] += 1
+      hsh[carriage.type.remove('Carriage').downcase] += 1
     end
   end
 
