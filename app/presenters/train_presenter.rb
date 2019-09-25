@@ -1,8 +1,6 @@
 class TrainPresenter < BasePresenter
   def count_carraiage_types
-    carriages.each_with_object(Hash.new(0)) do |carriage, hsh|
-      hsh[carriage.type.remove('Carriage').downcase] += 1
-    end
+    carriages.select(:type).group(:type).count.transform_keys! { |key| key.remove('Carriage').downcase }
   end
 
   def sorted_carriage

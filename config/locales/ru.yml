@@ -38,8 +38,6 @@ ru:
     errors: "При заполнении формы возникли ошибки"
   admin:
     railway_stations:
-      form:
-        submit: "%{action} станцию"
       index:
         title: "Станции"
         new_railway_station: "Новая станция"
@@ -51,8 +49,6 @@ ru:
       new:
         title: "Новая станция"
     routes:
-      form:
-        submit: "%{action} маршрут"
       index:
         new_route: "Новый маршрут"
         table:
@@ -78,7 +74,6 @@ ru:
     trains:
       form:
         from_head: "С головы"
-        submit: "%{action} поезд"
       edit:
         titile: "Измениние поезда"
       index:
@@ -107,3 +102,7 @@ ru:
           number_head: "Номера вагонов: ГОЛОВА"
           number_tail: "ХВОСТ"
           add: "Добавить вагон"
+  helpers:
+    submit:
+      create: "Создать"
+      update: "Изменить"

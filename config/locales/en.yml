@@ -122,3 +122,6 @@ en:
           number_head: "Carriages numbers: HEAD"
           number_tail: "TAIL"
           add: "Add carriage"
+  tickets:
+    form:
+      create: "Create ticket"
