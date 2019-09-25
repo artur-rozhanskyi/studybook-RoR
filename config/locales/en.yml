@@ -30,4 +30,98 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  common:
+    admin_header:
+      home: "Home"
+      trains: "Trains"
+      routes: "Routes"
+      railway_stations: "Railway Stations"
+      tickets: "Tickets"
+    user_name:
+      hello: "Hello"
+    create: "Create"
+    change: "Update"
+    show: "Show"
+    edit: "Edit"
+    destroy: "Destroy"
+    back: "Back"
+    sure: "Are you sure?"
+    errors: "Errors occurred while filling out the form"
+  admin:
+    railway_stations:
+      form:
+        name: "Name"
+        submit: "%{action} railway station"
+      index:
+        title: "Railway Stations"
+        new_railway_station: "New Railway Station"
+        table:
+          title:
+            name: "Name"
+      show:
+        name: "Name"
+      new:
+        title: "New Railway Station"
+    routes:
+      form:
+        submit: "%{action} route"
+      index:
+        new_route: "New Route"
+        table:
+          title:
+            name: "Name"
+        title: "Routes"
+      new:
+        title: "New Route"
+      show:
+        name: "Name"
+        trains: "Trains"
+        no_train: "There are no trains on the route"
+        stations:
+          table:
+            title:
+              name: "Name"
+              position: "Position"
+              arrival: "Arrival"
+              departure: "Departure"
+          names: "Stations"
+        submit: "Update"
+        no_station: "There are no stations on the route"
+    trains:
+      form:
+        number: "Number"
+        routes: "Routes"
+        current_station: "Current station"
+        from_head: "From head"
+        submit: "%{action} train"
+      edit:
+        titile: "Editing Train"
+      index:
+        title: "Trains"
+        new_train: "New Train"
+        table:
+          title:
+            number: "Number"
+      new:
+        title: "New Train"
+      show:
+        number: "Number"
+        current_station:
+          name: "Current station"
+          not_set: "Not specified"
+        route:
+          name: "Route"
+          not_set: "Not specified"
+        carriages:
+          name: "Carriages"
+          type:
+            coupe: 'Coupe'
+            economy: 'Coupe'
+            seating: 'Seating'
+            sleeper: 'Sleeper'
+          number_head: "Carriages numbers: HEAD"
+          number_tail: "TAIL"
+          add: "Add carriage"
+  tickets:
+    form:
+      create: "Create ticket"

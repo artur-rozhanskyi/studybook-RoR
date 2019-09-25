@@ -1,0 +1,32 @@
+ru:
+  activerecord:
+    models:
+      railway_station: "Станция"
+      train: "Поезд"
+      route: "Маршрут"
+      ticket: "Билет"
+    attributes:
+      railway_station:
+        name: "Название"
+      train:
+        number: "Номер"
+        routes: "Маршруты"
+        current_station_id: "Текущая станция"
+      route:
+        name: "Название"
+        railway_station_ids: "Станции"
+      ticket:
+        name: "Имя"
+        middle_name: "Отчество"
+        last_name: "Фамилия"
+        passport: "Номер паспорта"
+    errors:
+      messages:
+        blank: "должно быть заполнено"
+      models:
+        ticket:
+          attributes:
+            last_name:
+              blank: "должна быть заполнена"
+            passport:
+              blank: "должен быть заполнен"

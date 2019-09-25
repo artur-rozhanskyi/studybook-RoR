@@ -4,8 +4,6 @@
               data:  { :confirm => 'Are you sure?', :method => :delete, :remote => true}%> |
   <%= link_to 'Back', admin_train_path(carriage.train) %>
 
-  <p id="notice"><%= notice %></p>
-
   <p>
     <strong>Carriage type:</strong>
     <%= carriage.type.remove("Carriage") %>

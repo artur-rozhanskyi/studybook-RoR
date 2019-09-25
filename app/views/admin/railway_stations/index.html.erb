@@ -1,13 +1,13 @@
-<p id="notice"><%= notice %></p>
 
-<h1>Railway Stations</h1>
 
-<%= link_to 'New Railway Station', new_admin_railway_station_path %>
+<h1><%= t('.title') %></h1>
+
+<%= link_to t('.new_railway_station'), new_admin_railway_station_path %>
 
 <table class="table table-striped">
   <thead>
     <tr>
-      <th>Name</th>
+      <th><%= t('.table.title.name') %></th>
     </tr>
   </thead>
 

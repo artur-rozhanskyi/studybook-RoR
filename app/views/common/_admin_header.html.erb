@@ -2,12 +2,11 @@
   <%= render 'common/user_name' %>
   <nav>
     <ul class="nav">
-      <li><%= link_to "Home", root_path %></li>
-      <li><%= link_to "Search", search_path %></li>
-      <li><%= link_to "Trains", admin_trains_path %></li>
-      <li><%= link_to "Routes", admin_routes_path %></li>
-      <li><%= link_to "Railway Stations", admin_railway_stations_path %></li>
-      <li><%= link_to "Tickets", tickets_path %></li>
+      <li><%= link_to t(".home"), admin_welcome_index_path %></li>
+      <li><%= link_to t(".trains"), admin_trains_path %></li>
+      <li><%= link_to t(".routes"), admin_routes_path %></li>
+      <li><%= link_to t(".railway_stations"), admin_railway_stations_path %></li>
+      <li><%= link_to t(".tickets"), admin_tickets_path %></li>
       <li><%= render 'common/log_in_log_out' %></li>
     </ul>
   </nav>
