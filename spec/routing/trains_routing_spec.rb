@@ -1,37 +1,37 @@
 require 'rails_helper'
 
-RSpec.describe TrainsController, type: :routing do
+RSpec.describe Admin::TrainsController, type: :routing do
   describe 'routing' do
     it 'routes to #index' do
-      expect(get: '/trains').to route_to('trains#index')
+      expect(get: '/admin/trains').to route_to('admin/trains#index')
     end
 
     it 'routes to #new' do
-      expect(get: '/trains/new').to route_to('trains#new')
+      expect(get: '/admin/trains/new').to route_to('admin/trains#new')
     end
 
     it 'routes to #show' do
-      expect(get: '/trains/1').to route_to('trains#show', id: '1')
+      expect(get: '/admin/trains/1').to route_to('admin/trains#show', id: '1')
     end
 
     it 'routes to #edit' do
-      expect(get: '/trains/1/edit').to route_to('trains#edit', id: '1')
+      expect(get: '/admin/trains/1/edit').to route_to('admin/trains#edit', id: '1')
     end
 
     it 'routes to #create' do
-      expect(post: '/trains').to route_to('trains#create')
+      expect(post: '/admin/trains').to route_to('admin/trains#create')
     end
 
     it 'routes to #update via PUT' do
-      expect(put: '/trains/1').to route_to('trains#update', id: '1')
+      expect(put: '/admin/trains/1').to route_to('admin/trains#update', id: '1')
     end
 
     it 'routes to #update via PATCH' do
-      expect(patch: '/trains/1').to route_to('trains#update', id: '1')
+      expect(patch: '/admin/trains/1').to route_to('admin/trains#update', id: '1')
     end
 
     it 'routes to #destroy' do
-      expect(delete: '/trains/1').to route_to('trains#destroy', id: '1')
+      expect(delete: '/admin/trains/1').to route_to('admin/trains#destroy', id: '1')
     end
   end
 end

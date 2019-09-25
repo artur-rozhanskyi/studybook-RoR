@@ -1,25 +1,25 @@
 <%= form_for(@ticket, class: 'form-horizontal') do |form| %>
   <%= render 'common/error', resource: @ticket %>
 
-<!--  <div class="field">-->
-    <%#= form.label :name %>
-    <%#= form.text_field :name %>
-<!--  </div>-->
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
 
-<!--  <div class="field">-->
-    <%#= form.label :middle_name %>
-    <%#= form.text_field :middle_name %>
-<!--  </div>-->
+  <div class="field">
+    <%= form.label :middle_name %>
+    <%= form.text_field :middle_name %>
+  </div>
 
-<!--  <div class="field">-->
-    <%#= form.label :last_name %>
-    <%#= form.text_field :last_name %>
-<!--  </div>-->
+  <div class="field">
+    <%= form.label :last_name %>
+    <%= form.text_field :last_name %>
+  </div>
 
-<!--  <div class="field">-->
-    <%#= form.label :passport %>
-    <%#= form.text_field :passport %>
-<!--  </div>-->
+  <div class="field">
+    <%= form.label :passport %>
+    <%= form.text_field :passport %>
+  </div>
 
   <div class="field">
     <%= form.label :train %>
@@ -44,19 +44,10 @@
     <p><%= form.datetime_field :departure %></p>
   </div>
 
-
   <div class="field">
     <%= form.label :arrival %>
     <p><%= form.datetime_field :arrival %></p>
   </div>
-
-    <%= form.fields_for :user do |user_form|%>
-      <%= user_form.label :login %>
-      <%= user_form.text_field :login %>
-
-      <%= user_form.label :password %>
-      <%= user_form.password_field :password %>
-    <% end %>
 
   <div class="actions">
     <%= form.submit %>

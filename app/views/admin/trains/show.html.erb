@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+<% present(@train) do |train| %>
+  <%= link_to 'Edit', edit_admin_train_path(train) %> |
+  <%= link_to 'Back', admin_trains_path %>
+
+  <p>
+    <strong>Number:</strong>
+    <%= train.number %>
+  </p>
+
+  <p>
+    <strong>Current station:</strong>
+    <% if train.current_station.present? %>
+      <%= train.current_station.name %>
+    <% else %>
+    Not specified
+    <% end %>
+  </p>
+
+  <p>
+    <strong>Route</strong>
+    <% if train.routes.present? %>
+      <% train.routes.each do |route|  %>
+        <%= route.name %>
+      <% end %>
+    <% else %>
+    Not specified
+    <% end %>
+  </p>
+
+  <p>
+    <strong>Carriages</strong>
+    <p>
+      <% train.count_carraiage_types.each do |key, value| %>
+        <%=  "#{key.remove('Carriage')} - #{value}" %>
+      <% end %>
+    </p>
+
+    <p>
+      Carriages numbers: HEAD
+      <% train.sorted_carriage.each do |carriage| %>
+        <%= link_to carriage.number , controller: "carriages", action: "show", id: carriage  %> |
+      <% end %>
+      TAIL
+    </p>
+
+    <p> <%= link_to "Add carriage", new_admin_train_carriage_path(train) %> </p>
+  </p>
+<% end %>

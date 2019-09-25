@@ -1,0 +1,13 @@
+<% present(carriage.becomes(Carriage)) do |car| %>
+  <tr>  
+    <td>
+      <%= car.train ? link_to(car.train.number, controller: "trains", action: "show", id: car.train) : "No train"  %>
+    </td>
+    <td>
+      <%= car.number ? link_to(car.number, controller: "carriages", action: "show", id: car) : "No number"  %>
+    </td>
+    <td><%= link_to 'Edit', edit_admin_carriage_path(car) %></td>
+    <td><%= link_to 'Destroy', { :controller => 'carriages', :action => 'destroy', :id => car },
+                          { :confirm => 'Are you sure?', :method => :delete, :remote => true}%></td>
+  </tr>
+<% end %>

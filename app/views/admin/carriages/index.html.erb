@@ -1,0 +1,18 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Carriages</h1>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Train Number</th>
+      <th>Carriage Number</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <%= render partial: 'admin/carriages/carriage', collection: @carriages, as: :carriage %>
+  </tbody>
+</table>
+
+<br>

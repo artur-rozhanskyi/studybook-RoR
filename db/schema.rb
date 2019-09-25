@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_16_141047) do
+ActiveRecord::Schema.define(version: 2019_09_23_144521) do
 
   create_table "carriages", force: :cascade do |t|
     t.integer "bottom_places"
@@ -77,9 +77,7 @@ ActiveRecord::Schema.define(version: 2019_09_16_141047) do
     t.index ["current_station_id"], name: "index_trains_on_current_station_id"
   end
 
-  create_table "users", force: :cascade do |t|
-    t.string "login"
-    t.string "password"
-  end
+# Could not dump table "users" because of following StandardError
+#   Unknown type 'booleam' for column 'admin'
 
 end

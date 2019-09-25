@@ -1,14 +1,13 @@
 require 'rails_helper'
 
 RSpec.describe TicketsController, type: :controller do
+  let(:user) { create(:user) }
   let(:valid_session) { {} }
   let(:ticket) { create(:ticket) }
-
   let(:starting) { create(:railway_station) }
   let(:destination) { create(:railway_station) }
   let(:train) { create(:train) }
   let(:time) { DateTime.now }
-  let(:user) { create(:user) }
   let(:valid_attributes) do
     { last_station_id: destination.id,
       first_station_id: starting.id,
@@ -21,6 +20,8 @@ RSpec.describe TicketsController, type: :controller do
       passport: Faker::Name.unique.name,
       user_id: user.id }
   end
+
+  before { log_in(user) }
 
   describe 'GET #index' do
     it 'returns a success response' do

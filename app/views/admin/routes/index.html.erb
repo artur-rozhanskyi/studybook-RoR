@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Routes</h1>
+
+<%= link_to 'New Route', new_admin_route_path %>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Name</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <%= render @routes %>
+  </tbody>
+</table>
+
+<br>

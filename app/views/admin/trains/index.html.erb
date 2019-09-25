@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Trains</h1>
+
+<%= link_to 'New Train', new_admin_train_path %>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Number</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <%= render partial: 'train', collection: @trains %>
+  </tbody>
+</table>
+
+<br>
