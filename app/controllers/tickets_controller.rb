@@ -15,6 +15,7 @@ class TicketsController < ApplicationController
   def create
     @ticket = current_user.tickets.new(ticket_params)
     if @ticket.save
+      send_notification @ticket, :buy
       redirect_to @ticket
     else
       render :new
@@ -22,7 +23,9 @@ class TicketsController < ApplicationController
   end
 
   def destroy
-    current_user.tickets.find(params[:id]).destroy
+    ticket = current_user.tickets.find(params[:id])
+    ticket.destroy
+    send_notification ticket, :delete
   rescue ActiveRecord::RecordNotFound
     flash[:alert] = 'You do not have permission'
   ensure
@@ -30,6 +33,10 @@ class TicketsController < ApplicationController
   end
 
   private
+
+  def send_notification(ticket, method)
+    TicketsMailer.send_ticket_notification(current_user, ticket, method)
+  end
 
   def set_ticket
     @ticket = Ticket.find(params[:id])

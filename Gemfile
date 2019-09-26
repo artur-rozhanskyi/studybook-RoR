@@ -6,7 +6,7 @@ ruby '2.6.3'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.3'
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+gem 'pg'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets
@@ -41,9 +41,13 @@ gem 'jquery-rails'
 
 gem 'devise'
 
+gem 'rails_12factor'
+
+gem 'faker'
+gem 'therubyracer'
+
 group :development, :test do
   gem 'factory_bot_rails'
-  gem 'faker'
   gem 'pry-rails'
   gem 'rails-controller-testing'
   gem 'rspec-rails'
@@ -70,6 +74,7 @@ group :test do
   # Easy installation and use of chromedriver to run system tests with Chrome
   gem 'chromedriver-helper'
   gem 'shoulda-matchers'
+  gem 'sqlite3'
 end
 
 gem 'rails-erd', group: :development

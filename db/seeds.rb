@@ -55,7 +55,7 @@ trains = Train.create(trains_params)
 coupe_carriages_params = []
 
 (0..100).each do |number|
-  coupe_carriages_params << { number: number, train: trains.sample }
+  coupe_carriages_params << { number: number, train: trains.sampler }
 end
 
 CoupeCarriage.create(coupe_carriages_params)

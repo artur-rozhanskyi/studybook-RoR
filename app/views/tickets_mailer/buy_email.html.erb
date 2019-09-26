@@ -1,0 +1,7 @@
+<p><%= t("common.user_name.hello") %>, <%= @user.name %>!</p>
+
+<p>Вы только что купили билет по маршруту <%= @ticket.route_name %></p>
+
+<p>Посмотреть билет вы можете <%= link_to "здесь", @ticket %></p>
+
+<p>Ваши билеты вы можете посмотреть <%= link_to "здесь", tickets_url %></p>

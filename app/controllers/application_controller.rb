@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
 
   protected
 
-  def after_sign_in_path_for(_resource)
+  def after_sign_in_path_for
     current_user.admin? ? admin_welcome_index_path : search_path
   end
 
