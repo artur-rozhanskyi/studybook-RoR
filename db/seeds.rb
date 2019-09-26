@@ -34,6 +34,15 @@ end
 
 routes = Route.create(routes_params)
 
+routes.each do |route|
+  route.railway_stations_routes.each_with_index do |row, index|
+    row.position = index + 1
+    row.arrival = DateTime.now
+    row.departure = DateTime.now
+    row.save
+  end
+end
+
 trains_params = []
 
 10.times do |number|
