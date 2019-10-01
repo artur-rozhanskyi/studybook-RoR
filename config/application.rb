@@ -17,5 +17,10 @@ module StudybookRor
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
+    config.filter_parameters << :password
+
+    Raven.configure do |config|
+      config.sanitize_fields = Rails.application.config.filter_parameters.map(&:to_s)
+    end
   end
 end

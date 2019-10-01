@@ -1,10 +1,10 @@
 class TicketsMailer < ApplicationMailer
   before_action :set_instance_variables
 
-  def self.send_ticket_notification(user, ticket, method)
+  def self.send_ticket_notification(ticket, method)
     return unless new.respond_to?("#{method}_email")
 
-    with(user: user, ticket: ticket)
+    with(user: ticket.user, ticket: ticket)
       .public_send("#{method}_email")
       .deliver_now
   end

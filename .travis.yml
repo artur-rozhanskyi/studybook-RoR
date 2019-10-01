@@ -7,13 +7,9 @@ services:
   - rabbitmq
   - memcached
   - postgresql
-
-
 install:
   - gem install bundler
   - bundle install
-before_script:
-  - psql -c "CREATE DATABASE studibook_RoR_test;" -U postgres
 script:
   - bundle exec rake db:drop
   - bundle exec rake db:create

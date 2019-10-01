@@ -6,10 +6,10 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+Train.delete_all
 RailwayStation.delete_all
 Route.delete_all
 Carriage.delete_all
-Train.delete_all
 
 stations_params = []
 
@@ -54,16 +54,19 @@ trains = Train.create(trains_params)
 
 coupe_carriages_params = []
 
-(0..100).each do |number|
-  coupe_carriages_params << { number: number, train: trains.sampler }
+economy_carriages_params = []
+
+numbers = (0..100).to_a
+
+100.times do
+  coupe_carriages_params << { train: trains.sample, bottom_places: numbers.sample, upper_places: numbers.sample }
+  economy_carriages_params << { train: trains.sample,
+                                bottom_places: numbers.sample,
+                                upper_places: numbers.sample,
+                                side_bottom_places: numbers.sample,
+                                side_upper_places: numbers.sample }
 end
 
 CoupeCarriage.create(coupe_carriages_params)
-
-economy_carriages_params = []
-
-(101..200).each do |number|
-  economy_carriages_params << { number: number, train: trains.sample }
-end
 
 EconomyCarriage.create(economy_carriages_params)

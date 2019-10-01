@@ -27,7 +27,7 @@ Rails.application.configure do
   # config.assets.css_compressor = :sass
 
   # Do not fallback to assets pipeline if a precompiled asset is missed.
-  config.assets.compile = true
+  config.assets.compile = false
 
   # `config.assets.precompile` and `config.assets.version` have moved to config/initializers/assets.rb
 
@@ -94,25 +94,20 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
+  config.action_mailer.default :charset => "utf-8"
+
   config.action_mailer.delivery_method = :smtp
 
-  config.action_mailer.default_url_options = { :host => "murmuring-beyond-33507.herokuapp.com" }
+  config.action_mailer.default_url_options = { :host => "https://murmuring-beyond-33507.herokuapp.com" }
 
   config.action_mailer.smtp_settings = {
-    port: ENV['PORT'],
+    port: ENV['SMTP_PORT'],
     address: ENV['ADDRESS'],
     user_name: ENV['USER_NAME'],
     password: ENV['PASSWORD'],
     domain: ENV['DOMAIN'],
     enable_starttls_auto: true,
-    authentication: "login"
-    #   port: Rails.application.credentials[:production][:smtp][:port].to_i,
-    #   address: Rails.application.credentials[:production][:smtp][:host],
-    #   user_name: Rails.application.credentials[:production][:smtp][:username],
-    #   password: Rails.application.credentials[:production][:smtp][:password],
-    #   domain: "localhost",
-    #   enable_starttls_auto: true,
-    #   authentication: 'plain'
+    authentication: "plain"
   }
 
 end

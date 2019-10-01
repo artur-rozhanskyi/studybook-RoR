@@ -44,9 +44,11 @@ gem 'devise'
 gem 'rails_12factor'
 
 gem 'faker'
+gem 'sentry-raven'
 gem 'therubyracer'
 
 group :development, :test do
+  gem 'dotenv-rails'
   gem 'factory_bot_rails'
   gem 'pry-rails'
   gem 'rails-controller-testing'
@@ -74,7 +76,6 @@ group :test do
   # Easy installation and use of chromedriver to run system tests with Chrome
   gem 'chromedriver-helper'
   gem 'shoulda-matchers'
-  gem 'sqlite3'
 end
 
 gem 'rails-erd', group: :development

@@ -23,8 +23,7 @@ class TicketsController < ApplicationController
   end
 
   def destroy
-    ticket = current_user.tickets.find(params[:id])
-    ticket.destroy
+    ticket = current_user.tickets.find(params[:id]).destroy
     send_notification ticket, :delete
   rescue ActiveRecord::RecordNotFound
     flash[:alert] = 'You do not have permission'
@@ -35,7 +34,7 @@ class TicketsController < ApplicationController
   private
 
   def send_notification(ticket, method)
-    TicketsMailer.send_ticket_notification(current_user, ticket, method)
+    TicketsMailer.send_ticket_notification(ticket, method)
   end
 
   def set_ticket
