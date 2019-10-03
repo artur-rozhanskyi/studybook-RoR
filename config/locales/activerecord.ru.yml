@@ -30,3 +30,4 @@ ru:
               blank: "должна быть заполнена"
             passport:
               blank: "должен быть заполнен"
+  buy_ticket_email: ""

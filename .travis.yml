@@ -6,7 +6,7 @@ services:
   - riak
   - rabbitmq
   - memcached
-
+  - postgresql
 install:
   - gem install bundler
   - bundle install

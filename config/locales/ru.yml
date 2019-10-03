@@ -106,3 +106,8 @@ ru:
     submit:
       create: "Создать"
       update: "Изменить"
+  tickets_mailer:
+      buy_email:
+        subject: "Покупка билета"
+      delete_email:
+        subject: "Отмена билета"

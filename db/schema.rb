@@ -10,19 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_23_144521) do
+ActiveRecord::Schema.define(version: 2019_09_26_082723) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "carriages", force: :cascade do |t|
     t.integer "bottom_places"
     t.integer "upper_places"
-    t.integer "carriage_type_id"
-    t.integer "train_id"
+    t.bigint "train_id"
     t.string "type"
     t.integer "side_bottom_places"
     t.integer "side_upper_places"
     t.integer "seats"
     t.integer "number"
-    t.index ["carriage_type_id"], name: "index_carriages_on_carriage_type_id"
+    t.index ["id", "type"], name: "index_carriages_on_id_and_type"
     t.index ["train_id"], name: "index_carriages_on_train_id"
   end
 
@@ -33,8 +35,8 @@ ActiveRecord::Schema.define(version: 2019_09_23_144521) do
   end
 
   create_table "railway_stations_routes", force: :cascade do |t|
-    t.integer "route_id", null: false
-    t.integer "railway_station_id", null: false
+    t.bigint "route_id", null: false
+    t.bigint "railway_station_id", null: false
     t.integer "position"
     t.datetime "arrival"
     t.datetime "departure"
@@ -50,21 +52,26 @@ ActiveRecord::Schema.define(version: 2019_09_23_144521) do
   end
 
   create_table "routes_trains", id: false, force: :cascade do |t|
-    t.integer "route_id", null: false
-    t.integer "train_id", null: false
+    t.bigint "route_id", null: false
+    t.bigint "train_id", null: false
+    t.index ["route_id", "train_id"], name: "index_routes_trains_on_route_id_and_train_id"
+    t.index ["route_id"], name: "index_routes_trains_on_route_id"
+    t.index ["train_id"], name: "index_routes_trains_on_train_id"
   end
 
   create_table "tickets", force: :cascade do |t|
     t.integer "train_id"
     t.integer "first_station_id"
     t.integer "last_station_id"
-    t.integer "user_id"
+    t.bigint "user_id"
     t.string "name"
     t.string "middle_name"
     t.string "last_name"
     t.string "passport"
     t.datetime "arrival"
     t.datetime "departure"
+    t.index ["first_station_id"], name: "index_tickets_on_first_station_id"
+    t.index ["last_station_id"], name: "index_tickets_on_last_station_id"
     t.index ["user_id"], name: "index_tickets_on_user_id"
   end
 
@@ -72,12 +79,31 @@ ActiveRecord::Schema.define(version: 2019_09_23_144521) do
     t.string "number"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "current_station_id"
+    t.bigint "current_station_id"
     t.boolean "sort"
     t.index ["current_station_id"], name: "index_trains_on_current_station_id"
   end
 
-# Could not dump table "users" because of following StandardError
-#   Unknown type 'booleam' for column 'admin'
+  create_table "users", force: :cascade do |t|
+    t.string "login"
+    t.string "password"
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.string "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string "unconfirmed_email"
+    t.boolean "admin", default: false
+    t.string "name"
+    t.string "last_name"
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
 
+  add_foreign_key "carriages", "trains"
+  add_foreign_key "tickets", "users"
+  add_foreign_key "trains", "railway_stations", column: "current_station_id"
 end
