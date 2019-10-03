@@ -3,7 +3,9 @@
   <nav>
     <ul class="nav">
       <li><%= link_to t(".search"), search_path %></li>
-      <li><%= link_to t(".tickets"), tickets_path %></li>
+      <% if user_signed_in? %>
+        <li><%= link_to t(".tickets"), tickets_path %></li>
+      <% end %>
       <li><%= render 'common/log_in_log_out' %></li>
     </ul>
   </nav>
