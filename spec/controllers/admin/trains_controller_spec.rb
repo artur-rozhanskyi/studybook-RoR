@@ -96,11 +96,11 @@ RSpec.describe Admin::TrainsController, type: :controller do
   end
 
   describe 'PUT #update' do
-    context 'with valid params' do
-      let(:new_attributes) do
-        { number: 'Train2', current_station_id: create(:railway_station).id, routes: [create(:route)] }
-      end
+    let(:new_attributes) do
+      { number: 'Train2', current_station_id: create(:railway_station).id, routes: [create(:route)] }
+    end
 
+    context 'with valid params' do
       it 'updates the requested train' do
         put :update, params: { id: train.to_param, train: new_attributes }, session: valid_session
         train.reload
@@ -117,6 +117,14 @@ RSpec.describe Admin::TrainsController, type: :controller do
       it "returns a success response (i.e. to display the 'edit' template)" do
         put :update, params: { id: train.to_param, train: invalid_attributes }, session: valid_session
         expect(response).to be_successful
+      end
+    end
+
+    context 'with js format' do
+      it 'updates the requested train' do
+        put :update, params: { id: train.to_param, train: new_attributes }, session: valid_session, format: :js
+        train.reload
+        expect(train.number).to eq(new_attributes[:number])
       end
     end
   end

@@ -1,6 +1,6 @@
 <h1><%= t('.title') %></h1>
 <div class="row">
-  <%= form_tag search_path, method: :get do %>
+  <%= form_tag search_path, method: :get, class: "search_form" do %>
     <div class="form-group">
       <%= label_tag :starting, t('.starting') %>
       <%= select_tag :starting, options_for_select(station_list), class: "form-control" %>

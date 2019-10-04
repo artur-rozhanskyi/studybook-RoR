@@ -44,6 +44,7 @@ gem 'devise'
 gem 'rails_12factor'
 
 gem 'faker'
+gem 'i18n-js'
 gem 'sentry-raven'
 gem 'therubyracer'
 

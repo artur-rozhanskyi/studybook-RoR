@@ -23,6 +23,7 @@ ru:
     errors:
       messages:
         blank: "должно быть заполнено"
+        record_invalid: "Обшибка записи"
       models:
         ticket:
           attributes:

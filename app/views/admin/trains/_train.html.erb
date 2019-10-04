@@ -1,6 +1,18 @@
 <tr>
-  <td><%= train.number %></td>
-  <td><%= link_to t('common.show'), admin_train_path(train) %></td>
+  <td class="col-md-5">
+    <%= content_tag :p, "#{train.number}", class: "dbclick toggle_val_#{train.id}",
+                    id: "train_#{train.id}", data: { resource_id: train.id }  %>
+    <%= form_for [:admin,  train],
+                 html: { class: "form-horizontal inline_form toggle_val_#{train.id}",
+                         style: "display: none" },
+                 remote: true do |form| %>
+      <%= form.text_field :number %>
+      <%= form.submit  t(".submit"), class: "btn btn-success cancel"%>
+      <%= hidden_field_tag :id, train.id %>
+      <%= button_tag t("common.cancel"), type: 'button', class: "btn btn-danger cancel" %>
+    <% end %>
+  </td>
+  <td class="col-md-offset-6"><%= link_to t('common.show'), admin_train_path(train) %></td>
   <td><%= link_to t('common.edit'), edit_admin_train_path(train) %></td>
   <td><%= link_to t('common.destroy'), admin_train_path(train), method: :delete,
                   data: { confirm: t("common.sure") } %></td>

@@ -66,13 +66,14 @@ RSpec.describe Admin::RoutesController, type: :controller do
   end
 
   describe 'PUT #update' do
-    context 'with valid params' do
-      let(:railway_station_first) { create(:railway_station) }
-      let(:railway_station_last) { create(:railway_station) }
-      let(:new_attributes) do
-        { railway_station_ids: [create(:railway_station).id, create(:railway_station).id] }
-      end
+    let(:railway_station_first) { create(:railway_station) }
+    let(:railway_station_last) { create(:railway_station) }
+    let(:new_attributes) do
+      { railway_station_ids: create_list(:railway_station, 2).map(&:id) }
+    end
+    let(:js_attribute) { { name: create_list(:railway_station, 2).map(&:name).join(' - ') } }
 
+    context 'with valid params' do
       it 'updates the requested route' do
         put :update, params: { id: route.to_param, route: new_attributes }, session: valid_session
         route.reload
@@ -91,6 +92,14 @@ RSpec.describe Admin::RoutesController, type: :controller do
         put :update, params: { id: route.to_param, route: invalid_attributes },
                      session: valid_session
         expect(response).to be_successful
+      end
+    end
+
+    context 'with js format' do
+      it 'updates the requested train' do
+        put :update, params: { id: route.to_param, route: js_attribute }, session: valid_session, format: :js
+        route.reload
+        expect(route.name).to eq(js_attribute[:name])
       end
     end
   end
