@@ -1,0 +1,22 @@
+document.addEventListener("turbolinks:load", function() {
+    $(".search_form").submit(function(e) {
+      var start;
+      var end;
+
+      start = $(this).find("#starting");
+      end = $(this).find("#destination");
+      $(".alert-danger").remove();
+      if(start.val() == end.val()){
+          $(this).before(alert_message());
+          return false;
+      }
+    });
+});
+
+function alert_message() {
+    var div = document.createElement('div');
+    div.className = "alert alert-danger";
+    div.role = "alert";
+    div.innerText = "<%= I18n.t("searches.same_choose") %>"
+    return div;
+}
