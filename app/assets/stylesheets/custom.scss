@@ -92,3 +92,20 @@ form.form-horizontal
 #user_remember_me{
   margin-top: -15px;
 }
+
+form.inline_form{
+  margin: 0;
+}
+
+.table{
+  tr{
+    height: 55px;
+  }
+  td{
+    vertical-align: middle !important;
+    p{
+      margin: 0px 0px 0px 20px;
+      font-size: 15px;
+    }
+  }
+}

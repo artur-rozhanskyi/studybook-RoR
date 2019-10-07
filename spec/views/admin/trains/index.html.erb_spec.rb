@@ -7,6 +7,6 @@ RSpec.describe 'admin/trains/index', type: :view do
 
   it 'renders a list of trains' do
     render
-    assert_select 'tr>td', text: 'Number'.to_s, count: 2
+    assert_select 'tr>td>p', text: 'Number'.to_s, count: 2
   end
 end

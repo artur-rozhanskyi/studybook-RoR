@@ -24,10 +24,15 @@ module Admin
     def edit; end
 
     def update
-      if @route.update(route_params)
-        redirect_to admin_route_path(@route)
-      else
-        render :edit
+      respond_to do |format|
+        format.html do
+          if @route.update(route_params)
+            redirect_to admin_route_path(@route)
+          else
+            render :edit
+          end
+        end
+        format.js { @route.update(route_params) }
       end
     end
 
@@ -39,7 +44,7 @@ module Admin
     private
 
     def route_params
-      params.require(:route).permit(railway_station_ids: [])
+      params.require(:route).permit(:name, railway_station_ids: [])
     end
 
     def set_route

@@ -13,6 +13,7 @@ ru:
           departure: "Отправление"
           arrival: "Прибытие"
         buy: "Купить"
+    same_choose: "Вы выбрали одиноковые станции"
   common:
     header:
       search: "Поиск"
@@ -36,6 +37,7 @@ ru:
     back: "Назад"
     sure: "Вы уверенны?"
     errors: "При заполнении формы возникли ошибки"
+    cancel: "Отмена"
   admin:
     railway_stations:
       index:
@@ -71,6 +73,8 @@ ru:
           names: "Станции"
         submit: "Обновить"
         no_station: "Нет станций в маршруте"
+      route:
+        submit: "Обновить"
     trains:
       form:
         from_head: "С головы"
@@ -102,6 +106,8 @@ ru:
           number_head: "Номера вагонов: ГОЛОВА"
           number_tail: "ХВОСТ"
           add: "Добавить вагон"
+      train:
+        submit: "Обновить"
   helpers:
     submit:
       create: "Создать"

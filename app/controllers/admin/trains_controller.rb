@@ -24,10 +24,15 @@ module Admin
     end
 
     def update
-      if @train.update(train_params)
-        redirect_to admin_train_path(@train), notice: 'Train was successfully updated.'
-      else
-        render :edit
+      respond_to do |format|
+        format.html do
+          if @train.update(train_params)
+            redirect_to admin_train_path(@train), notice: 'Train was successfully updated.'
+          else
+            render :edit
+          end
+        end
+        format.js { @train.update(train_params) }
       end
     end
 

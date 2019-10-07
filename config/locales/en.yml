@@ -47,6 +47,7 @@ en:
     back: "Back"
     sure: "Are you sure?"
     errors: "Errors occurred while filling out the form"
+    cancel: "Cancel"
   admin:
     railway_stations:
       form:
@@ -87,6 +88,8 @@ en:
           names: "Stations"
         submit: "Update"
         no_station: "There are no stations on the route"
+      route:
+        submit: "Update"
     trains:
       form:
         number: "Number"
@@ -122,6 +125,10 @@ en:
           number_head: "Carriages numbers: HEAD"
           number_tail: "TAIL"
           add: "Add carriage"
+      train:
+        submit: "Update"
   tickets:
     form:
       create: "Create ticket"
+  searches:
+    same_choose: "You choose same station"

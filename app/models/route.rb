@@ -6,7 +6,7 @@ class Route < ApplicationRecord
   has_many :railway_stations, -> { order('position') }, through: :railway_stations_routes
   has_and_belongs_to_many :trains
 
-  before_validation :set_name
+  before_validation :set_name, if: ->(route) { route.name.nil? }
 
   private
 
